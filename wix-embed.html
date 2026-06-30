@@ -28,23 +28,6 @@
   .rule{width:54px;height:2px;background:var(--olive);margin:18px auto 0;opacity:.7}
   .intro{color:var(--muted);font-size:.96rem;margin:16px auto 0;max-width:48ch}
 
-  .account{margin:2px 0 4px;background:var(--soft);border:1px solid var(--line);
-    border-radius:14px;padding:16px 18px}
-  .acct-title{font-family:"Cormorant Garamond",Georgia,serif;color:var(--olive);font-weight:700;
-    font-size:1.3rem;margin:0 0 3px}
-  .acct-sub{color:var(--muted);font-size:.86rem;margin:0 0 12px}
-  .acct-fields{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-  .acct-fields input{flex:1;min-width:150px;font-family:inherit;font-size:.95rem;color:var(--ink);
-    background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px}
-  .acct-fields input:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px rgba(126,146,112,.25)}
-  .acct-btn{background:var(--olive);color:#fff;border:0;border-radius:10px;padding:11px 18px;
-    font-family:inherit;font-weight:700;cursor:pointer}
-  .acct-btn:hover{background:#33402a}
-  .acct-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .acct-link{background:none;border:0;color:var(--accent);font-family:inherit;font-weight:700;
-    cursor:pointer;text-decoration:underline;padding:6px 0;font-size:.9rem}
-  .acct-note{color:var(--muted);font-size:.84rem;margin:0}
-
   .pantry-divider{display:flex;align-items:center;gap:14px;margin:34px 0 6px}
   .pantry-divider::before,.pantry-divider::after{content:"";flex:1;height:1px;background:var(--line)}
   .pantry-divider span{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;
@@ -143,27 +126,6 @@
 </header>
 
 <main class="wrap">
-  <section class="account">
-    <div id="acctOut">
-      <h3 class="acct-title">Returning customer?</h3>
-      <p class="acct-sub">Save your details on this device so you can reorder in seconds next time. No password needed.</p>
-      <div class="acct-fields">
-        <input id="logEmail" type="email" autocomplete="email" placeholder="Email">
-        <input id="logName" type="text" autocomplete="name" placeholder="Name / business">
-      </div>
-      <button class="acct-btn" id="logBtn" type="button">Save &amp; remember me</button>
-    </div>
-    <div id="acctIn" hidden>
-      <h3 class="acct-title">Welcome <span id="acctName">back</span></h3>
-      <p class="acct-sub" id="acctEmailLine"></p>
-      <div class="acct-actions">
-        <button class="acct-btn" id="loadOrderBtn" type="button" hidden>Load my usual order</button>
-        <button class="acct-link" id="logoutBtn" type="button">Log out</button>
-      </div>
-    </div>
-    <p class="acct-note" id="acctUnavailable" hidden>Saved details will switch on once this page is published to the web.</p>
-  </section>
-
 <section class="cat"><h2 class="cat-title">Fresh Salads</h2><div class="items">
 <div class="item" data-id="i0">
   <div class="item-info"><span class="item-name">Tarragon Chicken Salad</span><span class="item-meta">16 oz &middot; $7.00</span></div>
@@ -895,7 +857,6 @@
     <div class="bevwarn" id="bevWarn" hidden></div>
     <button class="send" id="sendBtn" disabled>Email my order</button>
     <button class="copy" id="copyBtn" type="button">Copy order summary</button>
-    <button class="copy" id="saveUsualBtn" type="button" hidden>Save this as my usual order</button>
   </section>
 
   <p class="note">Questions? ali@reimaginednutrition.com &middot; 201-906-4983</p>
@@ -921,7 +882,6 @@ const TAX_RATES = {
   NY: {name: "NY", label: "NY Sales Tax", rate: 0.08875}
 };
 const qty = {};
-let currentEmail = null;
 
 function money(n){ return '$' + n.toFixed(2); }
 function formatRate(rate){
@@ -974,8 +934,6 @@ function recompute(){
   document.getElementById('taxLabel').textContent = taxInfo.label + ' (' + formatRate(taxInfo.rate) + ')';
   document.getElementById('sumTax').textContent = money(tax);
   document.getElementById('sumTotal').textContent = money(total);
-  const sb = document.getElementById('saveUsualBtn');
-  if(sb) sb.hidden = !(currentEmail && count>0);
   const issues = bevIssues();
   const warn = document.getElementById('bevWarn');
   if(warn){
@@ -1067,7 +1025,6 @@ document.getElementById('sendBtn').addEventListener('click', ()=>{
   const zip = zipDigits(document.getElementById('czip').value);
   if(zip.length !== 5){ toast('Add a 5-digit delivery ZIP for sales tax');
     document.getElementById('czip').focus(); return; }
-  if(currentEmail) saveProfileFromFields();
   const {body} = buildSummary();
   const subject = 'Wholesale Order - ' + name;
   window.location.href = 'mailto:' + EMAIL +
@@ -1085,97 +1042,6 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     ta.select(); document.execCommand('copy'); ta.remove(); toast('Order summary copied');
   }
 });
-
-const store = {
-  ok(){ try{ localStorage.setItem('__t','1'); localStorage.removeItem('__t'); return true; }catch(e){ return false; } },
-  get(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
-  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-};
-function profiles(){ return store.get('rn_profiles') || {}; }
-function orders(){ return store.get('rn_orders') || {}; }
-function emailKey(e){ return (e||'').trim().toLowerCase(); }
-
-function prefill(p){
-  if(!p) return;
-  if(p.name) document.getElementById('cname').value = p.name;
-  if(p.phone) document.getElementById('cphone').value = p.phone;
-  if(p.email) document.getElementById('cemail').value = p.email;
-  if(p.pickup) document.getElementById('cpickup').value = p.pickup;
-  if(p.zip) document.getElementById('czip').value = p.zip;
-}
-function saveProfileFromFields(){
-  if(!currentEmail) return;
-  const p = profiles();
-  p[currentEmail] = {
-    name: document.getElementById('cname').value.trim(),
-    phone: document.getElementById('cphone').value.trim(),
-    email: document.getElementById('cemail').value.trim(),
-    pickup: document.getElementById('cpickup').value.trim(),
-    zip: zipDigits(document.getElementById('czip').value)
-  };
-  store.set('rn_profiles', p);
-}
-function renderAccount(){
-  const out=document.getElementById('acctOut'), inn=document.getElementById('acctIn'),
-        un=document.getElementById('acctUnavailable');
-  if(!store.ok()){ out.hidden=true; inn.hidden=true; un.hidden=false; recompute(); return; }
-  un.hidden=true;
-  if(currentEmail){
-    const p = profiles()[currentEmail] || {};
-    out.hidden=true; inn.hidden=false;
-    document.getElementById('acctName').textContent = (p.name && p.name.split(' ')[0]) || 'back';
-    document.getElementById('acctEmailLine').textContent = p.email || currentEmail;
-    document.getElementById('loadOrderBtn').hidden = !(orders()[currentEmail]);
-  } else {
-    out.hidden=false; inn.hidden=true;
-  }
-  recompute();
-}
-
-document.getElementById('logBtn').addEventListener('click', ()=>{
-  const email = document.getElementById('logEmail').value.trim();
-  const name = document.getElementById('logName').value.trim();
-  if(!email || email.indexOf('@')<1){ toast('Enter a valid email to save your info'); return; }
-  currentEmail = emailKey(email);
-  const p = profiles();
-  const existing = p[currentEmail] || {};
-  p[currentEmail] = Object.assign(existing, {name: name||existing.name||'', email: email});
-  store.set('rn_profiles', p);
-  store.set('rn_last_email', currentEmail);
-  prefill(p[currentEmail]);
-  renderAccount();
-  toast('Saved on this device - welcome' + (name? ', '+name.split(' ')[0] : '') + '!');
-});
-document.getElementById('logoutBtn').addEventListener('click', ()=>{
-  currentEmail = null; store.set('rn_last_email', null);
-  document.getElementById('logEmail').value=''; document.getElementById('logName').value='';
-  renderAccount(); toast('Logged out of this device');
-});
-document.getElementById('loadOrderBtn').addEventListener('click', ()=>{
-  const o = orders()[currentEmail];
-  if(!o || !o.items){ toast('No saved order yet'); return; }
-  document.querySelectorAll('.item').forEach(r=>{ const id=r.dataset.id; setQty(id, o.items[id]||0); });
-  toast('Your usual order is loaded');
-  window.scrollTo({top:0, behavior:'smooth'});
-});
-document.getElementById('saveUsualBtn').addEventListener('click', ()=>{
-  if(!currentEmail){ toast('Save your info first to keep a usual order'); return; }
-  const items={}; for(const id in qty){ if(qty[id]>0) items[id]=qty[id]; }
-  if(Object.keys(items).length===0){ toast('Add items first'); return; }
-  const o = orders(); o[currentEmail] = {items: items, savedAt: Date.now()};
-  store.set('rn_orders', o);
-  saveProfileFromFields();
-  renderAccount();
-  toast('Saved as your usual order');
-});
-
-(function(){
-  if(store.ok()){
-    const last = store.get('rn_last_email');
-    if(last){ currentEmail = last; prefill(profiles()[last]); }
-  }
-  renderAccount();
-})();
 
 recompute();
 </script>

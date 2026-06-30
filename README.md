@@ -8,6 +8,9 @@ Static source for a Reimagined Nutrition embed intended to be used inside a Wix 
 - `index.html`, `styles.css`, `script.js` - current standalone site files kept as source/reference.
 - `assets/` - local image assets used by the standalone page.
 
+The current Wix embed was pulled from the public Claude artifact at:
+https://claude.ai/public/artifacts/ddaa59e3-87cd-4d5d-b48a-b524d0d52e17
+
 ## Wix Embed Workflow
 
 1. Edit and test `wix-embed.html` locally.

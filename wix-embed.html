@@ -1,80 +1,1151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reimagined Nutrition Embed</title>
-    <style>
-      :root {
-        --ink: #2a2a24;
-        --muted: #6e7363;
-        --parchment: #f6f3ea;
-        --olive: #3d4a2e;
-        --sage: #7e9270;
-        --soft: #e8eddf;
-        --card: #fbfaf5;
-        --line: #d8dec9;
-      }
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reimagined Nutrition - Wholesale Order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F6F3EA; --olive:#3D4A2E; --sage:#7E9270; --soft:#E8EDDF;
+    --card:#FBFAF5; --ink:#2A2A24; --muted:#6E7363; --line:#D8DEC9;
+    --accent:#5E7150;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--parchment);color:var(--ink);
+    font-family:"Nunito Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.5;padding-bottom:128px}
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px}
 
-      * {
-        box-sizing: border-box;
-      }
+  header.masthead{text-align:center;padding:38px 18px 26px}
+  .brand{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;
+    color:var(--olive);font-size:2.5rem;line-height:1.05;letter-spacing:.5px;margin:0}
+  .tagline{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;
+    color:var(--sage);font-size:1.15rem;margin:6px 0 0}
+  .rule{width:54px;height:2px;background:var(--olive);margin:18px auto 0;opacity:.7}
+  .intro{color:var(--muted);font-size:.96rem;margin:16px auto 0;max-width:48ch}
 
-      body {
-        margin: 0;
-        background: var(--parchment);
-        color: var(--ink);
-        font-family: Arial, Helvetica, sans-serif;
-        line-height: 1.5;
-      }
+  .account{margin:2px 0 4px;background:var(--soft);border:1px solid var(--line);
+    border-radius:14px;padding:16px 18px}
+  .acct-title{font-family:"Cormorant Garamond",Georgia,serif;color:var(--olive);font-weight:700;
+    font-size:1.3rem;margin:0 0 3px}
+  .acct-sub{color:var(--muted);font-size:.86rem;margin:0 0 12px}
+  .acct-fields{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .acct-fields input{flex:1;min-width:150px;font-family:inherit;font-size:.95rem;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+  .acct-fields input:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px rgba(126,146,112,.25)}
+  .acct-btn{background:var(--olive);color:#fff;border:0;border-radius:10px;padding:11px 18px;
+    font-family:inherit;font-weight:700;cursor:pointer}
+  .acct-btn:hover{background:#33402a}
+  .acct-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .acct-link{background:none;border:0;color:var(--accent);font-family:inherit;font-weight:700;
+    cursor:pointer;text-decoration:underline;padding:6px 0;font-size:.9rem}
+  .acct-note{color:var(--muted);font-size:.84rem;margin:0}
 
-      .embed {
-        margin: 0 auto;
-        max-width: 720px;
-        padding: 24px 18px;
-      }
+  .pantry-divider{display:flex;align-items:center;gap:14px;margin:34px 0 6px}
+  .pantry-divider::before,.pantry-divider::after{content:"";flex:1;height:1px;background:var(--line)}
+  .pantry-divider span{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;
+    letter-spacing:2px;text-transform:uppercase;color:var(--sage);font-size:.95rem}
 
-      .panel {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 28px;
-      }
+  .cat{margin-top:26px}
+  .cat-title{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;color:var(--olive);
+    font-size:1.5rem;margin:0 0 4px;padding-bottom:8px;border-bottom:2px solid var(--soft)}
+  .items{display:flex;flex-direction:column}
+  .cat-note{margin:6px 0 8px;font-size:.85rem;color:var(--accent);font-weight:700}
+  .item{display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:13px 2px;border-bottom:1px solid var(--line)}
+  .item-info{display:flex;flex-direction:column;min-width:0}
+  .item-name{font-weight:600;color:var(--ink);font-size:1rem}
+  .item-meta{color:var(--muted);font-size:.82rem;margin-top:2px;letter-spacing:.2px}
+  .item.active{background:linear-gradient(90deg,rgba(232,237,223,.6),transparent);border-radius:8px}
 
-      h1 {
-        color: var(--olive);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(2rem, 8vw, 3rem);
-        line-height: 1.05;
-        margin: 0 0 10px;
-      }
+  .stepper{display:flex;align-items:center;gap:0;flex:none;background:var(--card);
+    border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .step{width:38px;height:38px;border:0;background:transparent;color:var(--olive);
+    font-size:1.3rem;font-weight:700;cursor:pointer;line-height:1;transition:background .15s}
+  .step:hover{background:var(--soft)}
+  .step:active{background:var(--sage);color:#fff}
+  .qty{min-width:30px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;
+    color:var(--ink)}
+  .qty.on{color:var(--accent)}
 
-      p {
-        color: var(--muted);
-        margin: 0;
-      }
+  .checkout{margin-top:40px;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:24px 22px}
+  .checkout h2{font-family:"Cormorant Garamond",Georgia,serif;color:var(--olive);
+    font-size:1.6rem;margin:0 0 4px}
+  .checkout .sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .field{margin-bottom:15px}
+  label{display:block;font-weight:700;font-size:.82rem;letter-spacing:.4px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  label .req{color:#a23;font-weight:700}
+  input,textarea{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+  input:focus,textarea:focus{outline:none;border-color:var(--sage);
+    box-shadow:0 0 0 3px rgba(126,146,112,.25)}
+  textarea{resize:vertical;min-height:84px}
+  .hint{color:var(--muted);font-size:.8rem;margin-top:5px}
 
-      .note {
-        background: var(--soft);
-        border-left: 4px solid var(--sage);
-        margin-top: 18px;
-        padding: 14px 16px;
-      }
-    </style>
-  </head>
-  <body>
-    <main class="embed">
-      <section class="panel" aria-labelledby="embed-title">
-        <h1 id="embed-title">Reimagined Nutrition</h1>
-        <p>
-          This file is the paste-ready Wix HTML embed entry point. Replace this placeholder
-          with the finished embed markup, styles, and script.
-        </p>
-        <p class="note">
-          The pasted attachment was incomplete, ending mid-CSS, so the repository is set up
-          without treating that partial file as production embed code.
-        </p>
-      </section>
-    </main>
-  </body>
+  .summary{margin:4px 0 16px;padding-top:14px;border-top:1px solid var(--line)}
+  .taxrow{display:flex;align-items:center;gap:9px;text-transform:none;letter-spacing:0;
+    color:var(--ink);font-weight:700;font-size:.92rem;margin-bottom:12px;cursor:pointer}
+  .taxrow input{width:auto;height:18px;accent-color:var(--olive);cursor:pointer}
+  .srow{display:flex;justify-content:space-between;align-items:baseline;
+    font-size:.95rem;color:var(--muted);padding:3px 0}
+  .srow.total{color:var(--olive);font-weight:700;font-size:1.35rem;
+    font-family:"Cormorant Garamond",Georgia,serif;border-top:1px solid var(--line);
+    margin-top:6px;padding-top:9px}
+
+  .send{width:100%;margin-top:8px;background:var(--olive);color:#fff;border:0;
+    border-radius:12px;padding:16px;font-family:inherit;font-size:1.05rem;font-weight:800;
+    letter-spacing:.3px;cursor:pointer;transition:transform .12s,background .2s}
+  .send:hover{background:#33402a}
+  .send:active{transform:translateY(1px)}
+  .send:disabled{background:#b9c0ad;cursor:not-allowed}
+  .copy{width:100%;margin-top:10px;background:transparent;color:var(--accent);
+    border:1px solid var(--line);border-radius:12px;padding:12px;font-family:inherit;
+    font-weight:700;cursor:pointer}
+  .copy:hover{background:var(--soft)}
+  .copy:disabled{opacity:.5;cursor:not-allowed}
+  .bevwarn{margin:4px 0 14px;padding:12px 14px;border-radius:11px;
+    background:#FBEFE3;border:1px solid #E3C9A6;color:#7A4F1E;
+    font-size:.9rem;line-height:1.45}
+  .item.bevbad{background:#FBEFE3;border-color:#E3C9A6}
+  .item.bevbad .item-meta{color:#A9701F}
+  .note{text-align:center;color:var(--muted);font-size:.82rem;margin:18px 0 36px}
+
+  .basket{position:fixed;left:0;right:0;bottom:0;z-index:20;
+    background:rgba(61,74,46,.97);color:#fff;backdrop-filter:blur(6px);
+    border-top:3px solid var(--sage)}
+  .basket .inner{max-width:680px;margin:0 auto;padding:13px 18px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .basket .count{font-size:.82rem;color:#d7e0cb;letter-spacing:.3px}
+  .basket .total{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;
+    font-size:1.5rem;line-height:1}
+  .basket .review{background:#fff;color:var(--olive);border:0;border-radius:999px;
+    padding:11px 20px;font-family:inherit;font-weight:800;cursor:pointer;font-size:.95rem}
+  .basket .review:disabled{opacity:.55;cursor:not-allowed}
+
+  .toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);
+    background:var(--olive);color:#fff;padding:11px 20px;border-radius:999px;
+    font-size:.9rem;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:30}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto}}
+  @media (max-width:480px){ .brand{font-size:2.1rem} .item-name{font-size:.96rem} }
+</style>
+</head>
+<body id="artifacts-component-root-html">
+<header class="masthead">
+  <h1 class="brand">Reimagined Nutrition</h1>
+  <p class="tagline">Where Culinary Excellence Meets Intentional Nutrition</p>
+  <div class="rule"></div>
+  <p class="intro">Build your wholesale order below, add a note for anything custom, and send it straight to Chef Ali. All pricing shown is wholesale.</p>
+</header>
+
+<main class="wrap">
+  <section class="account">
+    <div id="acctOut">
+      <h3 class="acct-title">Returning customer?</h3>
+      <p class="acct-sub">Save your details on this device so you can reorder in seconds next time. No password needed.</p>
+      <div class="acct-fields">
+        <input id="logEmail" type="email" autocomplete="email" placeholder="Email">
+        <input id="logName" type="text" autocomplete="name" placeholder="Name / business">
+      </div>
+      <button class="acct-btn" id="logBtn" type="button">Save &amp; remember me</button>
+    </div>
+    <div id="acctIn" hidden>
+      <h3 class="acct-title">Welcome <span id="acctName">back</span></h3>
+      <p class="acct-sub" id="acctEmailLine"></p>
+      <div class="acct-actions">
+        <button class="acct-btn" id="loadOrderBtn" type="button" hidden>Load my usual order</button>
+        <button class="acct-link" id="logoutBtn" type="button">Log out</button>
+      </div>
+    </div>
+    <p class="acct-note" id="acctUnavailable" hidden>Saved details will switch on once this page is published to the web.</p>
+  </section>
+
+<section class="cat"><h2 class="cat-title">Fresh Salads</h2><div class="items">
+<div class="item" data-id="i0">
+  <div class="item-info"><span class="item-name">Tarragon Chicken Salad</span><span class="item-meta">16 oz &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Tarragon Chicken Salad">
+    <button type="button" class="step minus" data-act="dec" data-id="i0" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i0" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i0" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i1">
+  <div class="item-info"><span class="item-name">Edamame Rice Noodle Salad with Peanut Sauce</span><span class="item-meta">16 oz &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Edamame Rice Noodle Salad with Peanut Sauce">
+    <button type="button" class="step minus" data-act="dec" data-id="i1" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i1" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i1" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i2">
+  <div class="item-info"><span class="item-name">Shaved Rainbow Carrot &amp; Cucumber Salad with Lemon Miso Tahini</span><span class="item-meta">16 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Shaved Rainbow Carrot &amp; Cucumber Salad with Lemon Miso Tahini">
+    <button type="button" class="step minus" data-act="dec" data-id="i2" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i2" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i2" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i3">
+  <div class="item-info"><span class="item-name">Mediterranean Whole Wheat Orzo Salad</span><span class="item-meta">16 oz &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Mediterranean Whole Wheat Orzo Salad">
+    <button type="button" class="step minus" data-act="dec" data-id="i3" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i3" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i3" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i4">
+  <div class="item-info"><span class="item-name">Broccoli Crunch Salad</span><span class="item-meta">16 oz &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Broccoli Crunch Salad">
+    <button type="button" class="step minus" data-act="dec" data-id="i4" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i4" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i4" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i5">
+  <div class="item-info"><span class="item-name">Grilled Nectarine &amp; Mozzarella Caprese Salad with White Balsamic over Arugula</span><span class="item-meta">16 oz &middot; $8.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Grilled Nectarine &amp; Mozzarella Caprese Salad with White Balsamic over Arugula">
+    <button type="button" class="step minus" data-act="dec" data-id="i5" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i5" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i5" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i6">
+  <div class="item-info"><span class="item-name">Watermelon Cucumber Salad with Fresh Mint</span><span class="item-meta">16 oz &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Watermelon Cucumber Salad with Fresh Mint">
+    <button type="button" class="step minus" data-act="dec" data-id="i6" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i6" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i6" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i7">
+  <div class="item-info"><span class="item-name">Broccolini Protein Pasta Salad with Heirloom Cherry Tomatoes</span><span class="item-meta">16 oz &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Broccolini Protein Pasta Salad with Heirloom Cherry Tomatoes">
+    <button type="button" class="step minus" data-act="dec" data-id="i7" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i7" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i7" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i8">
+  <div class="item-info"><span class="item-name">Vegan Carrot &quot;Lox&quot;</span><span class="item-meta">16 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Carrot &quot;Lox&quot;">
+    <button type="button" class="step minus" data-act="dec" data-id="i8" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i8" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i8" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Signature Sandwiches</h2><div class="items">
+<div class="item" data-id="i9">
+  <div class="item-info"><span class="item-name">Nitrate-Free Italian on Sesame Semolina</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Nitrate-Free Italian on Sesame Semolina">
+    <button type="button" class="step minus" data-act="dec" data-id="i9" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i9" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i9" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i10">
+  <div class="item-info"><span class="item-name">Caprese with Roasted Tomatoes &amp; Pesto on Asiago Focaccia Bun</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Caprese with Roasted Tomatoes &amp; Pesto on Asiago Focaccia Bun">
+    <button type="button" class="step minus" data-act="dec" data-id="i10" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i10" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i10" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i11">
+  <div class="item-info"><span class="item-name">Grilled Chicken &amp; Zucchini Pesto Ciabatta Panini with Sundried Tomato Bruschetta</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Grilled Chicken &amp; Zucchini Pesto Ciabatta Panini with Sundried Tomato Bruschetta">
+    <button type="button" class="step minus" data-act="dec" data-id="i11" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i11" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i11" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i12">
+  <div class="item-info"><span class="item-name">Prosciutto di Parma, Grilled Nectarine, Fresh Mozzarella, Heirloom Tomato, Basil &amp; Arugula with Balsamic on Focaccia</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Prosciutto di Parma, Grilled Nectarine, Fresh Mozzarella, Heirloom Tomato, Basil &amp; Arugula with Balsamic on Focaccia">
+    <button type="button" class="step minus" data-act="dec" data-id="i12" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i12" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i12" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i13">
+  <div class="item-info"><span class="item-name">Roasted Turkey Breast, Whipped Brie, Tarragon Mayo, Honeycrisp Apple &amp; Mixed Greens on Ficelle</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Roasted Turkey Breast, Whipped Brie, Tarragon Mayo, Honeycrisp Apple &amp; Mixed Greens on Ficelle">
+    <button type="button" class="step minus" data-act="dec" data-id="i13" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i13" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i13" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i14">
+  <div class="item-info"><span class="item-name">Curried Chicken Salad with Butter Lettuce &amp; Roasted Grapes on Croissant</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Curried Chicken Salad with Butter Lettuce &amp; Roasted Grapes on Croissant">
+    <button type="button" class="step minus" data-act="dec" data-id="i14" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i14" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i14" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i15">
+  <div class="item-info"><span class="item-name">Wild-Caught Tuna Salad with Lettuce &amp; Tomato on Multigrain</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Wild-Caught Tuna Salad with Lettuce &amp; Tomato on Multigrain">
+    <button type="button" class="step minus" data-act="dec" data-id="i15" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i15" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i15" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i16">
+  <div class="item-info"><span class="item-name">Vegan Carrot &quot;Lox&quot; &amp; Cashew Cream Cheese Everything Bagel</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Carrot &quot;Lox&quot; &amp; Cashew Cream Cheese Everything Bagel">
+    <button type="button" class="step minus" data-act="dec" data-id="i16" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i16" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i16" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i17">
+  <div class="item-info"><span class="item-name">Vegan Beet Chipotle BBQ Tempeh, Avocado, Tomato, Lettuce &amp; Sprouts on Multigrain</span><span class="item-meta">Each &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Beet Chipotle BBQ Tempeh, Avocado, Tomato, Lettuce &amp; Sprouts on Multigrain">
+    <button type="button" class="step minus" data-act="dec" data-id="i17" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i17" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i17" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Soups</h2><div class="items">
+<div class="item" data-id="i18">
+  <div class="item-info"><span class="item-name">Protein Chicken Corn Chowder with Whipped Tofu &amp; Parmesan</span><span class="item-meta">Quart &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Protein Chicken Corn Chowder with Whipped Tofu &amp; Parmesan">
+    <button type="button" class="step minus" data-act="dec" data-id="i18" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i18" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i18" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i19">
+  <div class="item-info"><span class="item-name">Chicken &amp; Wild Rice Soup</span><span class="item-meta">Quart &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Chicken &amp; Wild Rice Soup">
+    <button type="button" class="step minus" data-act="dec" data-id="i19" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i19" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i19" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i20">
+  <div class="item-info"><span class="item-name">Spring Green 5-Onion Veloute with Protein Milk</span><span class="item-meta">Quart &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Spring Green 5-Onion Veloute with Protein Milk">
+    <button type="button" class="step minus" data-act="dec" data-id="i20" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i20" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i20" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i21">
+  <div class="item-info"><span class="item-name">French Onion Bone Broth Soup</span><span class="item-meta">Quart &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for French Onion Bone Broth Soup">
+    <button type="button" class="step minus" data-act="dec" data-id="i21" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i21" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i21" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i22">
+  <div class="item-info"><span class="item-name">Vegan Broccoli Cheddar Soup</span><span class="item-meta">Quart &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Broccoli Cheddar Soup">
+    <button type="button" class="step minus" data-act="dec" data-id="i22" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i22" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i22" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i23">
+  <div class="item-info"><span class="item-name">Chicken Bone Broth</span><span class="item-meta">Quart &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Chicken Bone Broth">
+    <button type="button" class="step minus" data-act="dec" data-id="i23" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i23" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i23" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i24">
+  <div class="item-info"><span class="item-name">Beef Bone Broth</span><span class="item-meta">Quart &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Beef Bone Broth">
+    <button type="button" class="step minus" data-act="dec" data-id="i24" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i24" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i24" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i25">
+  <div class="item-info"><span class="item-name">Gazpacho</span><span class="item-meta">Quart &middot; $8.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Gazpacho">
+    <button type="button" class="step minus" data-act="dec" data-id="i25" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i25" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i25" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i26">
+  <div class="item-info"><span class="item-name">Chilled Golden Beet Borscht</span><span class="item-meta">Quart &middot; $10.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Chilled Golden Beet Borscht">
+    <button type="button" class="step minus" data-act="dec" data-id="i26" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i26" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i26" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Dips, Spreads &amp; Dressings</h2><div class="items">
+<div class="item" data-id="i27">
+  <div class="item-info"><span class="item-name">Lebanese Hummus</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Lebanese Hummus">
+    <button type="button" class="step minus" data-act="dec" data-id="i27" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i27" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i27" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i28">
+  <div class="item-info"><span class="item-name">Green Goddess Dressing</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Green Goddess Dressing">
+    <button type="button" class="step minus" data-act="dec" data-id="i28" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i28" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i28" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i29">
+  <div class="item-info"><span class="item-name">Lemon Miso Tahini Dressing</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Lemon Miso Tahini Dressing">
+    <button type="button" class="step minus" data-act="dec" data-id="i29" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i29" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i29" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i30">
+  <div class="item-info"><span class="item-name">Raspberry Vinaigrette</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Raspberry Vinaigrette">
+    <button type="button" class="step minus" data-act="dec" data-id="i30" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i30" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i30" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i31">
+  <div class="item-info"><span class="item-name">Peanut Sauce</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Peanut Sauce">
+    <button type="button" class="step minus" data-act="dec" data-id="i31" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i31" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i31" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i32">
+  <div class="item-info"><span class="item-name">Za&#x27;atar Babaganoush</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Za&#x27;atar Babaganoush">
+    <button type="button" class="step minus" data-act="dec" data-id="i32" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i32" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i32" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i33">
+  <div class="item-info"><span class="item-name">Roasted Eggplant Caponata</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Roasted Eggplant Caponata">
+    <button type="button" class="step minus" data-act="dec" data-id="i33" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i33" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i33" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i34">
+  <div class="item-info"><span class="item-name">Tuscan Herb Dipping Oil</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Tuscan Herb Dipping Oil">
+    <button type="button" class="step minus" data-act="dec" data-id="i34" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i34" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i34" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i35">
+  <div class="item-info"><span class="item-name">Peanut Butter Chickpea Chocolate Chip Cookie Dough</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Peanut Butter Chickpea Chocolate Chip Cookie Dough">
+    <button type="button" class="step minus" data-act="dec" data-id="i35" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i35" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i35" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i36">
+  <div class="item-info"><span class="item-name">Whipped Feta &amp; White Bean Dip with Za&#x27;atar Pita Chips</span><span class="item-meta">8 oz &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Whipped Feta &amp; White Bean Dip with Za&#x27;atar Pita Chips">
+    <button type="button" class="step minus" data-act="dec" data-id="i36" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i36" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i36" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i37">
+  <div class="item-info"><span class="item-name">Tzatziki</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Tzatziki">
+    <button type="button" class="step minus" data-act="dec" data-id="i37" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i37" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i37" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i38">
+  <div class="item-info"><span class="item-name">Vegan Beet Hummus</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Beet Hummus">
+    <button type="button" class="step minus" data-act="dec" data-id="i38" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i38" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i38" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i39">
+  <div class="item-info"><span class="item-name">Vegan Calabrian Chili Aioli</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Calabrian Chili Aioli">
+    <button type="button" class="step minus" data-act="dec" data-id="i39" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i39" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i39" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<div class="pantry-divider"><span>Artisan Pantry</span></div>
+<section class="cat"><h2 class="cat-title">Artisan Breads</h2><div class="items">
+<div class="item" data-id="i40">
+  <div class="item-info"><span class="item-name">Sourdough Boule</span><span class="item-meta">Each &middot; $8.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Sourdough Boule">
+    <button type="button" class="step minus" data-act="dec" data-id="i40" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i40" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i40" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i41">
+  <div class="item-info"><span class="item-name">Rosemary Sea Salt Focaccia</span><span class="item-meta">Each &middot; $8.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Rosemary Sea Salt Focaccia">
+    <button type="button" class="step minus" data-act="dec" data-id="i41" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i41" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i41" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i42">
+  <div class="item-info"><span class="item-name">Decorated Focaccia Art</span><span class="item-meta">Each &middot; $12.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Decorated Focaccia Art">
+    <button type="button" class="step minus" data-act="dec" data-id="i42" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i42" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i42" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i43">
+  <div class="item-info"><span class="item-name">GF Seed Crackers</span><span class="item-meta">6 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for GF Seed Crackers">
+    <button type="button" class="step minus" data-act="dec" data-id="i43" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i43" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i43" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Jams</h2><div class="items">
+<div class="item" data-id="i44">
+  <div class="item-info"><span class="item-name">Grilled Peach Jam</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Grilled Peach Jam">
+    <button type="button" class="step minus" data-act="dec" data-id="i44" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i44" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i44" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i45">
+  <div class="item-info"><span class="item-name">Strawberry Jam</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Strawberry Jam">
+    <button type="button" class="step minus" data-act="dec" data-id="i45" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i45" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i45" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i46">
+  <div class="item-info"><span class="item-name">Blueberry Jam</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Blueberry Jam">
+    <button type="button" class="step minus" data-act="dec" data-id="i46" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i46" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i46" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i47">
+  <div class="item-info"><span class="item-name">Grapefruit Honey Marmalade</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Grapefruit Honey Marmalade">
+    <button type="button" class="step minus" data-act="dec" data-id="i47" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i47" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i47" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i48">
+  <div class="item-info"><span class="item-name">Savory Onion Jam</span><span class="item-meta">8 oz &middot; $6.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Savory Onion Jam">
+    <button type="button" class="step minus" data-act="dec" data-id="i48" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i48" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i48" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i49">
+  <div class="item-info"><span class="item-name">Tomato Bacon Jam</span><span class="item-meta">8 oz &middot; $8.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Tomato Bacon Jam">
+    <button type="button" class="step minus" data-act="dec" data-id="i49" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i49" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i49" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Cocktail Rimming Sugars</h2><div class="items">
+<div class="item" data-id="i50">
+  <div class="item-info"><span class="item-name">Hibiscus Sugar</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Hibiscus Sugar">
+    <button type="button" class="step minus" data-act="dec" data-id="i50" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i50" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i50" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i51">
+  <div class="item-info"><span class="item-name">Margarita Lime Salt</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Margarita Lime Salt">
+    <button type="button" class="step minus" data-act="dec" data-id="i51" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i51" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i51" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i52">
+  <div class="item-info"><span class="item-name">Lavender Sugar</span><span class="item-meta">8 oz &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Lavender Sugar">
+    <button type="button" class="step minus" data-act="dec" data-id="i52" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i52" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i52" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Granola</h2><div class="items">
+<div class="item" data-id="i53">
+  <div class="item-info"><span class="item-name">Sugar-Free Maple Pecan Granola</span><span class="item-meta">Bag &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Sugar-Free Maple Pecan Granola">
+    <button type="button" class="step minus" data-act="dec" data-id="i53" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i53" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i53" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i54">
+  <div class="item-info"><span class="item-name">Orange Pistachio Granola</span><span class="item-meta">Bag &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Orange Pistachio Granola">
+    <button type="button" class="step minus" data-act="dec" data-id="i54" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i54" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i54" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i55">
+  <div class="item-info"><span class="item-name">Cacao Pumpkin Seed Granola</span><span class="item-meta">Bag &middot; $7.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Cacao Pumpkin Seed Granola">
+    <button type="button" class="step minus" data-act="dec" data-id="i55" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i55" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i55" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Bakery &amp; Muffins</h2><div class="items">
+<div class="item" data-id="i56">
+  <div class="item-info"><span class="item-name">Vegan Hummingbird Muffins</span><span class="item-meta">4-Pack &middot; $14.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Hummingbird Muffins">
+    <button type="button" class="step minus" data-act="dec" data-id="i56" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i56" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i56" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i57">
+  <div class="item-info"><span class="item-name">GF Vegan Banana Chocolate Chip Mini Breads</span><span class="item-meta">4-Pack &middot; $14.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for GF Vegan Banana Chocolate Chip Mini Breads">
+    <button type="button" class="step minus" data-act="dec" data-id="i57" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i57" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i57" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i58">
+  <div class="item-info"><span class="item-name">GF Double Chocolate Zucchini Mini Breads</span><span class="item-meta">4-Pack &middot; $14.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for GF Double Chocolate Zucchini Mini Breads">
+    <button type="button" class="step minus" data-act="dec" data-id="i58" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i58" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i58" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i59">
+  <div class="item-info"><span class="item-name">Vegan Lemon Pound Cake Minis</span><span class="item-meta">4-Pack &middot; $14.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Lemon Pound Cake Minis">
+    <button type="button" class="step minus" data-act="dec" data-id="i59" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i59" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i59" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i60">
+  <div class="item-info"><span class="item-name">Vegan Carrot Raisin Muffins</span><span class="item-meta">4-Pack &middot; $14.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Vegan Carrot Raisin Muffins">
+    <button type="button" class="step minus" data-act="dec" data-id="i60" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i60" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i60" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i61">
+  <div class="item-info"><span class="item-name">Blueberry Cheesecake Stuffed Muffins</span><span class="item-meta">4-Pack &middot; $16.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Blueberry Cheesecake Stuffed Muffins">
+    <button type="button" class="step minus" data-act="dec" data-id="i61" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i61" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i61" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i62">
+  <div class="item-info"><span class="item-name">Madeleines</span><span class="item-meta">4-Pack &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Madeleines">
+    <button type="button" class="step minus" data-act="dec" data-id="i62" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i62" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i62" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i63">
+  <div class="item-info"><span class="item-name">GF Black Bean Brownies</span><span class="item-meta">Single &middot; $3.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for GF Black Bean Brownies">
+    <button type="button" class="step minus" data-act="dec" data-id="i63" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i63" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i63" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i64">
+  <div class="item-info"><span class="item-name">Mixed Berry Crumb Tart</span><span class="item-meta">Each &middot; $4.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Mixed Berry Crumb Tart">
+    <button type="button" class="step minus" data-act="dec" data-id="i64" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i64" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i64" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i65">
+  <div class="item-info"><span class="item-name">Strawberry Crumb Tart</span><span class="item-meta">Each &middot; $4.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Strawberry Crumb Tart">
+    <button type="button" class="step minus" data-act="dec" data-id="i65" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i65" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i65" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i66">
+  <div class="item-info"><span class="item-name">Blueberry Crumb Tart</span><span class="item-meta">Each &middot; $4.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Blueberry Crumb Tart">
+    <button type="button" class="step minus" data-act="dec" data-id="i66" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i66" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i66" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i67">
+  <div class="item-info"><span class="item-name">Date Cocoa Pumpkin Seed Truffles</span><span class="item-meta">4-Pack &middot; $5.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Date Cocoa Pumpkin Seed Truffles">
+    <button type="button" class="step minus" data-act="dec" data-id="i67" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i67" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i67" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i68">
+  <div class="item-info"><span class="item-name">GF Blueberry Muffins</span><span class="item-meta">4-Pack &middot; $14.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for GF Blueberry Muffins">
+    <button type="button" class="step minus" data-act="dec" data-id="i68" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i68" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i68" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i69">
+  <div class="item-info"><span class="item-name">GF Carrot Date Nut Muffins</span><span class="item-meta">4-Pack &middot; $14.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for GF Carrot Date Nut Muffins">
+    <button type="button" class="step minus" data-act="dec" data-id="i69" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i69" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i69" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i70">
+  <div class="item-info"><span class="item-name">Key Lime Pie</span><span class="item-meta">Each &middot; $12.00</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Key Lime Pie">
+    <button type="button" class="step minus" data-act="dec" data-id="i70" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i70" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i70" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+<section class="cat"><h2 class="cat-title">Signature Beverages</h2><p class="cat-note">Wholesale by the flavor &middot; minimum 8 per flavor (multiples of 8)</p><div class="items">
+<div class="item" data-id="i71">
+  <div class="item-info"><span class="item-name">Evergreen Elixir</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Evergreen Elixir">
+    <button type="button" class="step minus" data-act="dec" data-id="i71" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i71" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i71" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i72">
+  <div class="item-info"><span class="item-name">Nature&#x27;s Candy</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Nature&#x27;s Candy">
+    <button type="button" class="step minus" data-act="dec" data-id="i72" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i72" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i72" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i73">
+  <div class="item-info"><span class="item-name">Hibiscus Pomegranate Potion</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Hibiscus Pomegranate Potion">
+    <button type="button" class="step minus" data-act="dec" data-id="i73" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i73" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i73" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i74">
+  <div class="item-info"><span class="item-name">Turmeric Ginger Lemonade</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Turmeric Ginger Lemonade">
+    <button type="button" class="step minus" data-act="dec" data-id="i74" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i74" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i74" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i75">
+  <div class="item-info"><span class="item-name">Watermelon Rose Agua Fresca</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Watermelon Rose Agua Fresca">
+    <button type="button" class="step minus" data-act="dec" data-id="i75" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i75" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i75" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i76">
+  <div class="item-info"><span class="item-name">Golden Glow</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Golden Glow">
+    <button type="button" class="step minus" data-act="dec" data-id="i76" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i76" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i76" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i77">
+  <div class="item-info"><span class="item-name">Strawberry Basil Refresher</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Strawberry Basil Refresher">
+    <button type="button" class="step minus" data-act="dec" data-id="i77" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i77" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i77" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i78">
+  <div class="item-info"><span class="item-name">Cucumber Mint Cooler</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Cucumber Mint Cooler">
+    <button type="button" class="step minus" data-act="dec" data-id="i78" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i78" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i78" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i79">
+  <div class="item-info"><span class="item-name">Ruby Root</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Ruby Root">
+    <button type="button" class="step minus" data-act="dec" data-id="i79" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i79" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i79" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i80">
+  <div class="item-info"><span class="item-name">Tropical Tide Punch</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Tropical Tide Punch">
+    <button type="button" class="step minus" data-act="dec" data-id="i80" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i80" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i80" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i81">
+  <div class="item-info"><span class="item-name">Pristine Green Juice</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Pristine Green Juice">
+    <button type="button" class="step minus" data-act="dec" data-id="i81" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i81" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i81" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i82">
+  <div class="item-info"><span class="item-name">Cucumber Chamomile Green Apple Tonic</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Cucumber Chamomile Green Apple Tonic">
+    <button type="button" class="step minus" data-act="dec" data-id="i82" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i82" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i82" aria-label="Add one">+</button>
+  </div>
+</div>
+<div class="item" data-id="i83">
+  <div class="item-info"><span class="item-name">Sugar-Free Iced Hibiscus Tisane</span><span class="item-meta">Bottle &middot; $3.75</span></div>
+  <div class="stepper" role="group" aria-label="Quantity for Sugar-Free Iced Hibiscus Tisane">
+    <button type="button" class="step minus" data-act="dec" data-id="i83" aria-label="Remove one">&minus;</button>
+    <span class="qty" id="q-i83" aria-live="polite">0</span>
+    <button type="button" class="step plus" data-act="inc" data-id="i83" aria-label="Add one">+</button>
+  </div>
+</div>
+</div></section>
+
+  <section class="checkout" id="checkout">
+    <h2>Send your order</h2>
+    <p class="sub">Ali will confirm availability and your total before delivery.</p>
+    <div class="field">
+      <label for="cname">Name / business <span class="req">*</span></label>
+      <input id="cname" type="text" autocomplete="name" placeholder="Your name or account">
+    </div>
+    <div class="field">
+      <label for="cphone">Phone</label>
+      <input id="cphone" type="tel" autocomplete="tel" placeholder="(201) 555-0123">
+    </div>
+    <div class="field">
+      <label for="cemail">Email</label>
+      <input id="cemail" type="email" autocomplete="email" placeholder="you@email.com">
+    </div>
+    <div class="field">
+      <label for="cpickup">Delivery / pickup</label>
+      <input id="cpickup" type="text" placeholder="Requested date and delivery or pickup details">
+    </div>
+    <div class="field">
+      <label for="crequest">Special requests</label>
+      <textarea id="crequest" placeholder="Allergies, gluten-free swaps, custom quantities, a cake for an occasion - anything you'd like Ali to know."></textarea>
+      <p class="hint">Optional, but Ali reads every one. Dietary needs are always welcome here.</p>
+    </div>
+    <div class="summary">
+      <label class="taxrow"><input type="checkbox" id="taxToggle" checked> Add NJ sales tax (6.625%)</label>
+      <div class="srow"><span>Subtotal</span><span id="sumSubtotal">$0.00</span></div>
+      <div class="srow" id="taxLine"><span>NJ Sales Tax (6.625%)</span><span id="sumTax">$0.00</span></div>
+      <div class="srow total"><span>Total</span><span id="sumTotal">$0.00</span></div>
+    </div>
+    <div class="bevwarn" id="bevWarn" hidden></div>
+    <button class="send" id="sendBtn" disabled>Email my order</button>
+    <button class="copy" id="copyBtn" type="button">Copy order summary</button>
+    <button class="copy" id="saveUsualBtn" type="button" hidden>Save this as my usual order</button>
+  </section>
+
+  <p class="note">Questions? ali@reimaginednutrition.com &middot; 201-906-4983</p>
+</main>
+
+<div class="basket">
+  <div class="inner">
+    <div>
+      <div class="total" id="bTotal">$0.00</div>
+      <div class="count" id="bCount">No items yet</div>
+    </div>
+    <button class="review" id="reviewBtn" disabled>Review &amp; send</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const ITEMS = {"i0": {"name": "Tarragon Chicken Salad", "price": 7.0, "bev": false}, "i1": {"name": "Edamame Rice Noodle Salad with Peanut Sauce", "price": 7.0, "bev": false}, "i2": {"name": "Shaved Rainbow Carrot & Cucumber Salad with Lemon Miso Tahini", "price": 6.0, "bev": false}, "i3": {"name": "Mediterranean Whole Wheat Orzo Salad", "price": 7.0, "bev": false}, "i4": {"name": "Broccoli Crunch Salad", "price": 7.0, "bev": false}, "i5": {"name": "Grilled Nectarine & Mozzarella Caprese Salad with White Balsamic over Arugula", "price": 8.0, "bev": false}, "i6": {"name": "Watermelon Cucumber Salad with Fresh Mint", "price": 7.0, "bev": false}, "i7": {"name": "Broccolini Protein Pasta Salad with Heirloom Cherry Tomatoes", "price": 7.0, "bev": false}, "i8": {"name": "Vegan Carrot \"Lox\"", "price": 6.0, "bev": false}, "i9": {"name": "Nitrate-Free Italian on Sesame Semolina", "price": 10.0, "bev": false}, "i10": {"name": "Caprese with Roasted Tomatoes & Pesto on Asiago Focaccia Bun", "price": 10.0, "bev": false}, "i11": {"name": "Grilled Chicken & Zucchini Pesto Ciabatta Panini with Sundried Tomato Bruschetta", "price": 10.0, "bev": false}, "i12": {"name": "Prosciutto di Parma, Grilled Nectarine, Fresh Mozzarella, Heirloom Tomato, Basil & Arugula with Balsamic on Focaccia", "price": 10.0, "bev": false}, "i13": {"name": "Roasted Turkey Breast, Whipped Brie, Tarragon Mayo, Honeycrisp Apple & Mixed Greens on Ficelle", "price": 10.0, "bev": false}, "i14": {"name": "Curried Chicken Salad with Butter Lettuce & Roasted Grapes on Croissant", "price": 10.0, "bev": false}, "i15": {"name": "Wild-Caught Tuna Salad with Lettuce & Tomato on Multigrain", "price": 10.0, "bev": false}, "i16": {"name": "Vegan Carrot \"Lox\" & Cashew Cream Cheese Everything Bagel", "price": 10.0, "bev": false}, "i17": {"name": "Vegan Beet Chipotle BBQ Tempeh, Avocado, Tomato, Lettuce & Sprouts on Multigrain", "price": 10.0, "bev": false}, "i18": {"name": "Protein Chicken Corn Chowder with Whipped Tofu & Parmesan", "price": 10.0, "bev": false}, "i19": {"name": "Chicken & Wild Rice Soup", "price": 10.0, "bev": false}, "i20": {"name": "Spring Green 5-Onion Velout\u00e9 with Protein Milk", "price": 10.0, "bev": false}, "i21": {"name": "French Onion Bone Broth Soup", "price": 10.0, "bev": false}, "i22": {"name": "Vegan Broccoli Cheddar Soup", "price": 10.0, "bev": false}, "i23": {"name": "Chicken Bone Broth", "price": 7.0, "bev": false}, "i24": {"name": "Beef Bone Broth", "price": 7.0, "bev": false}, "i25": {"name": "Gazpacho", "price": 8.0, "bev": false}, "i26": {"name": "Chilled Golden Beet Borscht", "price": 10.0, "bev": false}, "i27": {"name": "Lebanese Hummus", "price": 5.0, "bev": false}, "i28": {"name": "Green Goddess Dressing", "price": 5.0, "bev": false}, "i29": {"name": "Lemon Miso Tahini Dressing", "price": 6.0, "bev": false}, "i30": {"name": "Raspberry Vinaigrette", "price": 5.0, "bev": false}, "i31": {"name": "Peanut Sauce", "price": 5.0, "bev": false}, "i32": {"name": "Za'atar Babaganoush", "price": 6.0, "bev": false}, "i33": {"name": "Roasted Eggplant Caponata", "price": 6.0, "bev": false}, "i34": {"name": "Tuscan Herb Dipping Oil", "price": 6.0, "bev": false}, "i35": {"name": "Peanut Butter Chickpea Chocolate Chip Cookie Dough", "price": 6.0, "bev": false}, "i36": {"name": "Whipped Feta & White Bean Dip with Za'atar Pita Chips", "price": 7.0, "bev": false}, "i37": {"name": "Tzatziki", "price": 5.0, "bev": false}, "i38": {"name": "Vegan Beet Hummus", "price": 5.0, "bev": false}, "i39": {"name": "Vegan Calabrian Chili Aioli", "price": 6.0, "bev": false}, "i40": {"name": "Sourdough Boule", "price": 8.0, "bev": false}, "i41": {"name": "Rosemary Sea Salt Focaccia", "price": 8.0, "bev": false}, "i42": {"name": "Decorated Focaccia Art", "price": 12.0, "bev": false}, "i43": {"name": "GF Seed Crackers", "price": 5.0, "bev": false}, "i44": {"name": "Grilled Peach Jam", "price": 6.0, "bev": false}, "i45": {"name": "Strawberry Jam", "price": 6.0, "bev": false}, "i46": {"name": "Blueberry Jam", "price": 6.0, "bev": false}, "i47": {"name": "Grapefruit Honey Marmalade", "price": 6.0, "bev": false}, "i48": {"name": "Savory Onion Jam", "price": 6.0, "bev": false}, "i49": {"name": "Tomato Bacon Jam", "price": 8.0, "bev": false}, "i50": {"name": "Hibiscus Sugar", "price": 5.0, "bev": false}, "i51": {"name": "Margarita Lime Salt", "price": 5.0, "bev": false}, "i52": {"name": "Lavender Sugar", "price": 5.0, "bev": false}, "i53": {"name": "Sugar-Free Maple Pecan Granola", "price": 7.0, "bev": false}, "i54": {"name": "Orange Pistachio Granola", "price": 7.0, "bev": false}, "i55": {"name": "Cacao Pumpkin Seed Granola", "price": 7.0, "bev": false}, "i56": {"name": "Vegan Hummingbird Muffins", "price": 14.0, "bev": false}, "i57": {"name": "GF Vegan Banana Chocolate Chip Mini Breads", "price": 14.0, "bev": false}, "i58": {"name": "GF Double Chocolate Zucchini Mini Breads", "price": 14.0, "bev": false}, "i59": {"name": "Vegan Lemon Pound Cake Minis", "price": 14.0, "bev": false}, "i60": {"name": "Vegan Carrot Raisin Muffins", "price": 14.0, "bev": false}, "i61": {"name": "Blueberry Cheesecake Stuffed Muffins", "price": 16.0, "bev": false}, "i62": {"name": "Madeleines", "price": 5.0, "bev": false}, "i63": {"name": "GF Black Bean Brownies", "price": 3.0, "bev": false}, "i64": {"name": "Mixed Berry Crumb Tart", "price": 4.0, "bev": false}, "i65": {"name": "Strawberry Crumb Tart", "price": 4.0, "bev": false}, "i66": {"name": "Blueberry Crumb Tart", "price": 4.0, "bev": false}, "i67": {"name": "Date Cocoa Pumpkin Seed Truffles", "price": 5.0, "bev": false}, "i68": {"name": "GF Blueberry Muffins", "price": 14.0, "bev": false}, "i69": {"name": "GF Carrot Date Nut Muffins", "price": 14.0, "bev": false}, "i70": {"name": "Key Lime Pie", "price": 12.0, "bev": false}, "i71": {"name": "Evergreen Elixir", "price": 3.75, "bev": true}, "i72": {"name": "Nature's Candy", "price": 3.75, "bev": true}, "i73": {"name": "Hibiscus Pomegranate Potion", "price": 3.75, "bev": true}, "i74": {"name": "Turmeric Ginger Lemonade", "price": 3.75, "bev": true}, "i75": {"name": "Watermelon Rose Agua Fresca", "price": 3.75, "bev": true}, "i76": {"name": "Golden Glow", "price": 3.75, "bev": true}, "i77": {"name": "Strawberry Basil Refresher", "price": 3.75, "bev": true}, "i78": {"name": "Cucumber Mint Cooler", "price": 3.75, "bev": true}, "i79": {"name": "Ruby Root", "price": 3.75, "bev": true}, "i80": {"name": "Tropical Tide Punch", "price": 3.75, "bev": true}, "i81": {"name": "Pristine Green Juice", "price": 3.75, "bev": true}, "i82": {"name": "Cucumber Chamomile Green Apple Tonic", "price": 3.75, "bev": true}, "i83": {"name": "Sugar-Free Iced Hibiscus Tisane", "price": 3.75, "bev": true}};
+const EMAIL = "ali@reimaginednutrition.com";
+const TAX_RATE = 0.06625;
+const qty = {};
+let currentEmail = null;
+
+function money(n){ return '$' + n.toFixed(2); }
+
+function bevIssues(){
+  // Beverages are wholesale by the flavor: minimum 8 per flavor, in multiples of 8.
+  const bad = [];
+  for(const id in qty){
+    const q = qty[id]||0;
+    if(q>0 && ITEMS[id].bev && (q < 8 || q % 8 !== 0)){
+      const need = q < 8 ? 8 : Math.ceil(q/8)*8;
+      bad.push({name: ITEMS[id].name, have: q, need});
+    }
+  }
+  return bad;
+}
+
+function recompute(){
+  let count = 0, subtotal = 0;
+  for(const id in qty){
+    const q = qty[id]; if(q>0){ count += q; subtotal += q * ITEMS[id].price; }
+  }
+  const taxOn = document.getElementById('taxToggle').checked;
+  const tax = taxOn ? Math.round(subtotal * TAX_RATE * 100) / 100 : 0;
+  const total = subtotal + tax;
+  document.getElementById('bTotal').textContent = money(total);
+  document.getElementById('bCount').textContent =
+    count === 0 ? 'No items yet' : count + (count===1?' item':' items') + ' selected';
+  document.getElementById('sumSubtotal').textContent = money(subtotal);
+  document.getElementById('sumTax').textContent = money(tax);
+  document.getElementById('sumTotal').textContent = money(total);
+  const taxRow = document.getElementById('taxLine');
+  if(taxRow) taxRow.style.opacity = taxOn ? '1' : '.45';
+  const sb = document.getElementById('saveUsualBtn');
+  if(sb) sb.hidden = !(currentEmail && count>0);
+  const issues = bevIssues();
+  const warn = document.getElementById('bevWarn');
+  if(warn){
+    if(issues.length){
+      warn.hidden = false;
+      warn.innerHTML = 'Beverages are wholesale by the flavor &mdash; <strong>minimum 8 per flavor</strong>, in multiples of 8.<br>' +
+        issues.map(b => '&bull; ' + b.name + ': you have ' + b.have + ', make it ' + b.need).join('<br>');
+    } else { warn.hidden = true; warn.innerHTML = ''; }
+  }
+  for(const r of document.querySelectorAll('.item')){
+    const id = r.dataset.id;
+    const isBad = ITEMS[id] && ITEMS[id].bev && ((qty[id]||0)>0) && ((qty[id]<8)||(qty[id]%8!==0));
+    r.classList.toggle('bevbad', !!isBad);
+  }
+  const has = count > 0;
+  const ok = has && issues.length === 0;
+  document.getElementById('reviewBtn').disabled = !has;
+  document.getElementById('sendBtn').disabled = !ok;
+  const cb = document.getElementById('copyBtn');
+  if(cb) cb.disabled = !ok;
+  return {count, subtotal, tax, total, taxOn, issues};
+}
+
+function setQty(id, val){
+  val = Math.max(0, val);
+  qty[id] = val;
+  const el = document.getElementById('q-'+id);
+  el.textContent = val;
+  el.classList.toggle('on', val>0);
+  const row = document.querySelector('.item[data-id="'+id+'"]');
+  if(row) row.classList.toggle('active', val>0);
+  recompute();
+}
+
+document.querySelectorAll('.step').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const id = b.dataset.id;
+    setQty(id, (qty[id]||0) + (b.dataset.act==='inc'?1:-1));
+  });
+});
+
+document.getElementById('reviewBtn').addEventListener('click', ()=>{
+  document.getElementById('checkout').scrollIntoView({behavior:'smooth', block:'start'});
+  document.getElementById('cname').focus({preventScroll:true});
+});
+
+document.getElementById('taxToggle').addEventListener('change', recompute);
+
+function buildSummary(){
+  const lines = [];
+  for(const r of document.querySelectorAll('.item')){
+    const id = r.dataset.id; const q = qty[id]||0;
+    if(q>0) lines.push(q + '\u00d7 ' + ITEMS[id].name + ' \u2014 ' + money(q*ITEMS[id].price));
+  }
+  const {subtotal, tax, total, taxOn} = recompute();
+  const name = (document.getElementById('cname').value||'').trim();
+  const phone = (document.getElementById('cphone').value||'').trim();
+  const email = (document.getElementById('cemail').value||'').trim();
+  const pickup = (document.getElementById('cpickup').value||'').trim();
+  const req = (document.getElementById('crequest').value||'').trim();
+
+  let body = 'NEW WHOLESALE ORDER\n\n';
+  body += 'Name: ' + (name||'-') + '\n';
+  body += 'Phone: ' + (phone||'-') + '\n';
+  body += 'Email: ' + (email||'-') + '\n';
+  body += 'Delivery/pickup: ' + (pickup||'-') + '\n\n';
+  body += 'ORDER\n' + lines.join('\n') + '\n\n';
+  body += 'Subtotal: ' + money(subtotal) + '\n';
+  if(taxOn) body += 'NJ Sales Tax (6.625%): ' + money(tax) + '\n';
+  body += 'TOTAL: ' + money(total) + '\n\n';
+  body += 'SPECIAL REQUESTS\n' + (req||'-') + '\n';
+  return {body, name, total};
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+document.getElementById('sendBtn').addEventListener('click', ()=>{
+  const {count} = recompute();
+  if(count===0){ toast('Add an item to start your order'); return; }
+  const name = document.getElementById('cname').value.trim();
+  if(!name){ toast('Add your name so Ali knows who it's from');
+    document.getElementById('cname').focus(); return; }
+  if(currentEmail) saveProfileFromFields();
+  const {body} = buildSummary();
+  const subject = 'Wholesale Order - ' + name;
+  window.location.href = 'mailto:' + EMAIL +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
+});
+
+document.getElementById('copyBtn').addEventListener('click', async ()=>{
+  const {count} = recompute();
+  if(count===0){ toast('Add an item first'); return; }
+  const {body} = buildSummary();
+  try{ await navigator.clipboard.writeText(body); toast('Order summary copied'); }
+  catch(e){
+    const ta=document.createElement('textarea'); ta.value=body; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove(); toast('Order summary copied');
+  }
+});
+
+const store = {
+  ok(){ try{ localStorage.setItem('__t','1'); localStorage.removeItem('__t'); return true; }catch(e){ return false; } },
+  get(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+function profiles(){ return store.get('rn_profiles') || {}; }
+function orders(){ return store.get('rn_orders') || {}; }
+function emailKey(e){ return (e||'').trim().toLowerCase(); }
+
+function prefill(p){
+  if(!p) return;
+  if(p.name) document.getElementById('cname').value = p.name;
+  if(p.phone) document.getElementById('cphone').value = p.phone;
+  if(p.email) document.getElementById('cemail').value = p.email;
+  if(p.pickup) document.getElementById('cpickup').value = p.pickup;
+}
+function saveProfileFromFields(){
+  if(!currentEmail) return;
+  const p = profiles();
+  p[currentEmail] = {
+    name: document.getElementById('cname').value.trim(),
+    phone: document.getElementById('cphone').value.trim(),
+    email: document.getElementById('cemail').value.trim(),
+    pickup: document.getElementById('cpickup').value.trim()
+  };
+  store.set('rn_profiles', p);
+}
+function renderAccount(){
+  const out=document.getElementById('acctOut'), inn=document.getElementById('acctIn'),
+        un=document.getElementById('acctUnavailable');
+  if(!store.ok()){ out.hidden=true; inn.hidden=true; un.hidden=false; recompute(); return; }
+  un.hidden=true;
+  if(currentEmail){
+    const p = profiles()[currentEmail] || {};
+    out.hidden=true; inn.hidden=false;
+    document.getElementById('acctName').textContent = (p.name && p.name.split(' ')[0]) || 'back';
+    document.getElementById('acctEmailLine').textContent = p.email || currentEmail;
+    document.getElementById('loadOrderBtn').hidden = !(orders()[currentEmail]);
+  } else {
+    out.hidden=false; inn.hidden=true;
+  }
+  recompute();
+}
+
+document.getElementById('logBtn').addEventListener('click', ()=>{
+  const email = document.getElementById('logEmail').value.trim();
+  const name = document.getElementById('logName').value.trim();
+  if(!email || email.indexOf('@')<1){ toast('Enter a valid email to save your info'); return; }
+  currentEmail = emailKey(email);
+  const p = profiles();
+  const existing = p[currentEmail] || {};
+  p[currentEmail] = Object.assign(existing, {name: name||existing.name||'', email: email});
+  store.set('rn_profiles', p);
+  store.set('rn_last_email', currentEmail);
+  prefill(p[currentEmail]);
+  renderAccount();
+  toast('Saved on this device - welcome' + (name? ', '+name.split(' ')[0] : '') + '!');
+});
+document.getElementById('logoutBtn').addEventListener('click', ()=>{
+  currentEmail = null; store.set('rn_last_email', null);
+  document.getElementById('logEmail').value=''; document.getElementById('logName').value='';
+  renderAccount(); toast('Logged out of this device');
+});
+document.getElementById('loadOrderBtn').addEventListener('click', ()=>{
+  const o = orders()[currentEmail];
+  if(!o || !o.items){ toast('No saved order yet'); return; }
+  document.querySelectorAll('.item').forEach(r=>{ const id=r.dataset.id; setQty(id, o.items[id]||0); });
+  toast('Your usual order is loaded');
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+document.getElementById('saveUsualBtn').addEventListener('click', ()=>{
+  if(!currentEmail){ toast('Save your info first to keep a usual order'); return; }
+  const items={}; for(const id in qty){ if(qty[id]>0) items[id]=qty[id]; }
+  if(Object.keys(items).length===0){ toast('Add items first'); return; }
+  const o = orders(); o[currentEmail] = {items: items, savedAt: Date.now()};
+  store.set('rn_orders', o);
+  saveProfileFromFields();
+  renderAccount();
+  toast('Saved as your usual order');
+});
+
+(function(){
+  if(store.ok()){
+    const last = store.get('rn_last_email');
+    if(last){ currentEmail = last; prefill(profiles()[last]); }
+  }
+  renderAccount();
+})();
+
+recompute();
+</script>
+</body>
 </html>

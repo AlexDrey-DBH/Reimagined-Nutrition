@@ -89,9 +89,6 @@
   .hint{color:var(--muted);font-size:.8rem;margin-top:5px}
 
   .summary{margin:4px 0 16px;padding-top:14px;border-top:1px solid var(--line)}
-  .taxrow{display:flex;align-items:center;gap:9px;text-transform:none;letter-spacing:0;
-    color:var(--ink);font-weight:700;font-size:.92rem;margin-bottom:12px;cursor:pointer}
-  .taxrow input{width:auto;height:18px;accent-color:var(--olive);cursor:pointer}
   .srow{display:flex;justify-content:space-between;align-items:baseline;
     font-size:.95rem;color:var(--muted);padding:3px 0}
   .srow.total{color:var(--olive);font-weight:700;font-size:1.35rem;
@@ -881,14 +878,18 @@
       <input id="cpickup" type="text" placeholder="Requested date and delivery or pickup details">
     </div>
     <div class="field">
+      <label for="czip">Delivery ZIP <span class="req">*</span></label>
+      <input id="czip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="07601 or 10001">
+      <p class="hint">Used to apply NJ or NY sales tax automatically.</p>
+    </div>
+    <div class="field">
       <label for="crequest">Special requests</label>
       <textarea id="crequest" placeholder="Allergies, gluten-free swaps, custom quantities, a cake for an occasion - anything you'd like Ali to know."></textarea>
       <p class="hint">Optional, but Ali reads every one. Dietary needs are always welcome here.</p>
     </div>
     <div class="summary">
-      <label class="taxrow"><input type="checkbox" id="taxToggle" checked> Add NJ sales tax (6.625%)</label>
       <div class="srow"><span>Subtotal</span><span id="sumSubtotal">$0.00</span></div>
-      <div class="srow" id="taxLine"><span>NJ Sales Tax (6.625%)</span><span id="sumTax">$0.00</span></div>
+      <div class="srow" id="taxLine"><span id="taxLabel">NJ Sales Tax (6.625%)</span><span id="sumTax">$0.00</span></div>
       <div class="srow total"><span>Total</span><span id="sumTotal">$0.00</span></div>
     </div>
     <div class="bevwarn" id="bevWarn" hidden></div>
@@ -914,11 +915,36 @@
 <script>
 const ITEMS = {"i0": {"name": "Tarragon Chicken Salad", "price": 7.0, "bev": false}, "i1": {"name": "Edamame Rice Noodle Salad with Peanut Sauce", "price": 7.0, "bev": false}, "i2": {"name": "Shaved Rainbow Carrot & Cucumber Salad with Lemon Miso Tahini", "price": 6.0, "bev": false}, "i3": {"name": "Mediterranean Whole Wheat Orzo Salad", "price": 7.0, "bev": false}, "i4": {"name": "Broccoli Crunch Salad", "price": 7.0, "bev": false}, "i5": {"name": "Grilled Nectarine & Mozzarella Caprese Salad with White Balsamic over Arugula", "price": 8.0, "bev": false}, "i6": {"name": "Watermelon Cucumber Salad with Fresh Mint", "price": 7.0, "bev": false}, "i7": {"name": "Broccolini Protein Pasta Salad with Heirloom Cherry Tomatoes", "price": 7.0, "bev": false}, "i8": {"name": "Vegan Carrot \"Lox\"", "price": 6.0, "bev": false}, "i9": {"name": "Nitrate-Free Italian on Sesame Semolina", "price": 10.0, "bev": false}, "i10": {"name": "Caprese with Roasted Tomatoes & Pesto on Asiago Focaccia Bun", "price": 10.0, "bev": false}, "i11": {"name": "Grilled Chicken & Zucchini Pesto Ciabatta Panini with Sundried Tomato Bruschetta", "price": 10.0, "bev": false}, "i12": {"name": "Prosciutto di Parma, Grilled Nectarine, Fresh Mozzarella, Heirloom Tomato, Basil & Arugula with Balsamic on Focaccia", "price": 10.0, "bev": false}, "i13": {"name": "Roasted Turkey Breast, Whipped Brie, Tarragon Mayo, Honeycrisp Apple & Mixed Greens on Ficelle", "price": 10.0, "bev": false}, "i14": {"name": "Curried Chicken Salad with Butter Lettuce & Roasted Grapes on Croissant", "price": 10.0, "bev": false}, "i15": {"name": "Wild-Caught Tuna Salad with Lettuce & Tomato on Multigrain", "price": 10.0, "bev": false}, "i16": {"name": "Vegan Carrot \"Lox\" & Cashew Cream Cheese Everything Bagel", "price": 10.0, "bev": false}, "i17": {"name": "Vegan Beet Chipotle BBQ Tempeh, Avocado, Tomato, Lettuce & Sprouts on Multigrain", "price": 10.0, "bev": false}, "i18": {"name": "Protein Chicken Corn Chowder with Whipped Tofu & Parmesan", "price": 10.0, "bev": false}, "i19": {"name": "Chicken & Wild Rice Soup", "price": 10.0, "bev": false}, "i20": {"name": "Spring Green 5-Onion Velout\u00e9 with Protein Milk", "price": 10.0, "bev": false}, "i21": {"name": "French Onion Bone Broth Soup", "price": 10.0, "bev": false}, "i22": {"name": "Vegan Broccoli Cheddar Soup", "price": 10.0, "bev": false}, "i23": {"name": "Chicken Bone Broth", "price": 7.0, "bev": false}, "i24": {"name": "Beef Bone Broth", "price": 7.0, "bev": false}, "i25": {"name": "Gazpacho", "price": 8.0, "bev": false}, "i26": {"name": "Chilled Golden Beet Borscht", "price": 10.0, "bev": false}, "i27": {"name": "Lebanese Hummus", "price": 5.0, "bev": false}, "i28": {"name": "Green Goddess Dressing", "price": 5.0, "bev": false}, "i29": {"name": "Lemon Miso Tahini Dressing", "price": 6.0, "bev": false}, "i30": {"name": "Raspberry Vinaigrette", "price": 5.0, "bev": false}, "i31": {"name": "Peanut Sauce", "price": 5.0, "bev": false}, "i32": {"name": "Za'atar Babaganoush", "price": 6.0, "bev": false}, "i33": {"name": "Roasted Eggplant Caponata", "price": 6.0, "bev": false}, "i34": {"name": "Tuscan Herb Dipping Oil", "price": 6.0, "bev": false}, "i35": {"name": "Peanut Butter Chickpea Chocolate Chip Cookie Dough", "price": 6.0, "bev": false}, "i36": {"name": "Whipped Feta & White Bean Dip with Za'atar Pita Chips", "price": 7.0, "bev": false}, "i37": {"name": "Tzatziki", "price": 5.0, "bev": false}, "i38": {"name": "Vegan Beet Hummus", "price": 5.0, "bev": false}, "i39": {"name": "Vegan Calabrian Chili Aioli", "price": 6.0, "bev": false}, "i40": {"name": "Sourdough Boule", "price": 8.0, "bev": false}, "i41": {"name": "Rosemary Sea Salt Focaccia", "price": 8.0, "bev": false}, "i42": {"name": "Decorated Focaccia Art", "price": 12.0, "bev": false}, "i43": {"name": "GF Seed Crackers", "price": 5.0, "bev": false}, "i44": {"name": "Grilled Peach Jam", "price": 6.0, "bev": false}, "i45": {"name": "Strawberry Jam", "price": 6.0, "bev": false}, "i46": {"name": "Blueberry Jam", "price": 6.0, "bev": false}, "i47": {"name": "Grapefruit Honey Marmalade", "price": 6.0, "bev": false}, "i48": {"name": "Savory Onion Jam", "price": 6.0, "bev": false}, "i49": {"name": "Tomato Bacon Jam", "price": 8.0, "bev": false}, "i50": {"name": "Hibiscus Sugar", "price": 5.0, "bev": false}, "i51": {"name": "Margarita Lime Salt", "price": 5.0, "bev": false}, "i52": {"name": "Lavender Sugar", "price": 5.0, "bev": false}, "i53": {"name": "Sugar-Free Maple Pecan Granola", "price": 7.0, "bev": false}, "i54": {"name": "Orange Pistachio Granola", "price": 7.0, "bev": false}, "i55": {"name": "Cacao Pumpkin Seed Granola", "price": 7.0, "bev": false}, "i56": {"name": "Vegan Hummingbird Muffins", "price": 14.0, "bev": false}, "i57": {"name": "GF Vegan Banana Chocolate Chip Mini Breads", "price": 14.0, "bev": false}, "i58": {"name": "GF Double Chocolate Zucchini Mini Breads", "price": 14.0, "bev": false}, "i59": {"name": "Vegan Lemon Pound Cake Minis", "price": 14.0, "bev": false}, "i60": {"name": "Vegan Carrot Raisin Muffins", "price": 14.0, "bev": false}, "i61": {"name": "Blueberry Cheesecake Stuffed Muffins", "price": 16.0, "bev": false}, "i62": {"name": "Madeleines", "price": 5.0, "bev": false}, "i63": {"name": "GF Black Bean Brownies", "price": 3.0, "bev": false}, "i64": {"name": "Mixed Berry Crumb Tart", "price": 4.0, "bev": false}, "i65": {"name": "Strawberry Crumb Tart", "price": 4.0, "bev": false}, "i66": {"name": "Blueberry Crumb Tart", "price": 4.0, "bev": false}, "i67": {"name": "Date Cocoa Pumpkin Seed Truffles", "price": 5.0, "bev": false}, "i68": {"name": "GF Blueberry Muffins", "price": 14.0, "bev": false}, "i69": {"name": "GF Carrot Date Nut Muffins", "price": 14.0, "bev": false}, "i70": {"name": "Key Lime Pie", "price": 12.0, "bev": false}, "i71": {"name": "Evergreen Elixir", "price": 3.75, "bev": true}, "i72": {"name": "Nature's Candy", "price": 3.75, "bev": true}, "i73": {"name": "Hibiscus Pomegranate Potion", "price": 3.75, "bev": true}, "i74": {"name": "Turmeric Ginger Lemonade", "price": 3.75, "bev": true}, "i75": {"name": "Watermelon Rose Agua Fresca", "price": 3.75, "bev": true}, "i76": {"name": "Golden Glow", "price": 3.75, "bev": true}, "i77": {"name": "Strawberry Basil Refresher", "price": 3.75, "bev": true}, "i78": {"name": "Cucumber Mint Cooler", "price": 3.75, "bev": true}, "i79": {"name": "Ruby Root", "price": 3.75, "bev": true}, "i80": {"name": "Tropical Tide Punch", "price": 3.75, "bev": true}, "i81": {"name": "Pristine Green Juice", "price": 3.75, "bev": true}, "i82": {"name": "Cucumber Chamomile Green Apple Tonic", "price": 3.75, "bev": true}, "i83": {"name": "Sugar-Free Iced Hibiscus Tisane", "price": 3.75, "bev": true}};
 const EMAIL = "ali@reimaginednutrition.com";
-const TAX_RATE = 0.06625;
+const DEFAULT_TAX_STATE = "NJ";
+const TAX_RATES = {
+  NJ: {name: "NJ", label: "NJ Sales Tax", rate: 0.06625},
+  NY: {name: "NY", label: "NY Sales Tax", rate: 0.08875}
+};
 const qty = {};
 let currentEmail = null;
 
 function money(n){ return '$' + n.toFixed(2); }
+function formatRate(rate){
+  return (rate * 100).toFixed(3).replace(/0+$/, '').replace(/\.$/, '') + '%';
+}
+function zipDigits(value){
+  return (value || '').replace(/\D/g, '').slice(0, 5);
+}
+function stateFromZip(zip){
+  const z = zipDigits(zip);
+  if(z.length < 5) return null;
+  const first3 = Number(z.slice(0, 3));
+  if(first3 >= 70 && first3 <= 89) return "NJ";
+  if(z === "06390" || z.startsWith("005") || (first3 >= 100 && first3 <= 149)) return "NY";
+  return null;
+}
+function currentTaxInfo(){
+  const zipEl = document.getElementById('czip');
+  const zip = zipDigits(zipEl ? zipEl.value : '');
+  const state = stateFromZip(zip) || DEFAULT_TAX_STATE;
+  const info = TAX_RATES[state] || TAX_RATES[DEFAULT_TAX_STATE];
+  return Object.assign({state, zip}, info);
+}
 
 function bevIssues(){
   // Beverages are wholesale by the flavor: minimum 8 per flavor, in multiples of 8.
@@ -938,17 +964,16 @@ function recompute(){
   for(const id in qty){
     const q = qty[id]; if(q>0){ count += q; subtotal += q * ITEMS[id].price; }
   }
-  const taxOn = document.getElementById('taxToggle').checked;
-  const tax = taxOn ? Math.round(subtotal * TAX_RATE * 100) / 100 : 0;
+  const taxInfo = currentTaxInfo();
+  const tax = Math.round(subtotal * taxInfo.rate * 100) / 100;
   const total = subtotal + tax;
   document.getElementById('bTotal').textContent = money(total);
   document.getElementById('bCount').textContent =
     count === 0 ? 'No items yet' : count + (count===1?' item':' items') + ' selected';
   document.getElementById('sumSubtotal').textContent = money(subtotal);
+  document.getElementById('taxLabel').textContent = taxInfo.label + ' (' + formatRate(taxInfo.rate) + ')';
   document.getElementById('sumTax').textContent = money(tax);
   document.getElementById('sumTotal').textContent = money(total);
-  const taxRow = document.getElementById('taxLine');
-  if(taxRow) taxRow.style.opacity = taxOn ? '1' : '.45';
   const sb = document.getElementById('saveUsualBtn');
   if(sb) sb.hidden = !(currentEmail && count>0);
   const issues = bevIssues();
@@ -971,7 +996,7 @@ function recompute(){
   document.getElementById('sendBtn').disabled = !ok;
   const cb = document.getElementById('copyBtn');
   if(cb) cb.disabled = !ok;
-  return {count, subtotal, tax, total, taxOn, issues};
+  return {count, subtotal, tax, total, taxInfo, issues};
 }
 
 function setQty(id, val){
@@ -996,8 +1021,7 @@ document.getElementById('reviewBtn').addEventListener('click', ()=>{
   document.getElementById('checkout').scrollIntoView({behavior:'smooth', block:'start'});
   document.getElementById('cname').focus({preventScroll:true});
 });
-
-document.getElementById('taxToggle').addEventListener('change', recompute);
+document.getElementById('czip').addEventListener('input', recompute);
 
 function buildSummary(){
   const lines = [];
@@ -1005,21 +1029,24 @@ function buildSummary(){
     const id = r.dataset.id; const q = qty[id]||0;
     if(q>0) lines.push(q + '\u00d7 ' + ITEMS[id].name + ' \u2014 ' + money(q*ITEMS[id].price));
   }
-  const {subtotal, tax, total, taxOn} = recompute();
+  const {subtotal, tax, total, taxInfo} = recompute();
   const name = (document.getElementById('cname').value||'').trim();
   const phone = (document.getElementById('cphone').value||'').trim();
   const email = (document.getElementById('cemail').value||'').trim();
   const pickup = (document.getElementById('cpickup').value||'').trim();
+  const zip = zipDigits(document.getElementById('czip').value||'');
   const req = (document.getElementById('crequest').value||'').trim();
 
   let body = 'NEW WHOLESALE ORDER\n\n';
   body += 'Name: ' + (name||'-') + '\n';
   body += 'Phone: ' + (phone||'-') + '\n';
   body += 'Email: ' + (email||'-') + '\n';
-  body += 'Delivery/pickup: ' + (pickup||'-') + '\n\n';
+  body += 'Delivery/pickup: ' + (pickup||'-') + '\n';
+  body += 'Delivery ZIP: ' + (zip||'-') + '\n';
+  body += 'Tax state: ' + taxInfo.state + '\n\n';
   body += 'ORDER\n' + lines.join('\n') + '\n\n';
   body += 'Subtotal: ' + money(subtotal) + '\n';
-  if(taxOn) body += 'NJ Sales Tax (6.625%): ' + money(tax) + '\n';
+  body += taxInfo.label + ' (' + formatRate(taxInfo.rate) + '): ' + money(tax) + '\n';
   body += 'TOTAL: ' + money(total) + '\n\n';
   body += 'SPECIAL REQUESTS\n' + (req||'-') + '\n';
   return {body, name, total};
@@ -1035,8 +1062,11 @@ document.getElementById('sendBtn').addEventListener('click', ()=>{
   const {count} = recompute();
   if(count===0){ toast('Add an item to start your order'); return; }
   const name = document.getElementById('cname').value.trim();
-  if(!name){ toast('Add your name so Ali knows who it's from');
+  if(!name){ toast("Add your name so Ali knows who it's from");
     document.getElementById('cname').focus(); return; }
+  const zip = zipDigits(document.getElementById('czip').value);
+  if(zip.length !== 5){ toast('Add a 5-digit delivery ZIP for sales tax');
+    document.getElementById('czip').focus(); return; }
   if(currentEmail) saveProfileFromFields();
   const {body} = buildSummary();
   const subject = 'Wholesale Order - ' + name;
@@ -1071,6 +1101,7 @@ function prefill(p){
   if(p.phone) document.getElementById('cphone').value = p.phone;
   if(p.email) document.getElementById('cemail').value = p.email;
   if(p.pickup) document.getElementById('cpickup').value = p.pickup;
+  if(p.zip) document.getElementById('czip').value = p.zip;
 }
 function saveProfileFromFields(){
   if(!currentEmail) return;
@@ -1079,7 +1110,8 @@ function saveProfileFromFields(){
     name: document.getElementById('cname').value.trim(),
     phone: document.getElementById('cphone').value.trim(),
     email: document.getElementById('cemail').value.trim(),
-    pickup: document.getElementById('cpickup').value.trim()
+    pickup: document.getElementById('cpickup').value.trim(),
+    zip: zipDigits(document.getElementById('czip').value)
   };
   store.set('rn_profiles', p);
 }

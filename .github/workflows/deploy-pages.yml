@@ -1,0 +1,60 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare static site artifact
+        run: |
+          mkdir -p _site/assets
+          cp index.html _site/
+          cp specialized-recovery-meals.html _site/
+          cp corporate-meals-office-lunches.html _site/
+          cp full-service-catering-events.html _site/
+          cp nutrition-counseling.html _site/
+          cp food-service-consulting.html _site/
+          cp about.html _site/
+          cp contact-and-inquiry.html _site/
+          cp styles.css _site/
+          cp script.js _site/
+          cp assets/reimagined-nutrition-hero.png _site/assets/
+          cp assets/reimagined-nutrition-icon.png _site/assets/
+          cp assets/reimagined-nutrition-logo-transparent.png _site/assets/
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

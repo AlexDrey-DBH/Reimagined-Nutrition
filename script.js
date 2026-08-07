@@ -1,7 +1,6 @@
-const navToggle = document.querySelector("[data-nav-toggle]");
+﻿const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
-const consultForm = document.querySelector("[data-consult-form]");
-const formStatus = document.querySelector("[data-form-status]");
+const forms = document.querySelectorAll("[data-site-form]");
 
 if (navToggle && nav) {
   navToggle.addEventListener("click", () => {
@@ -17,10 +16,14 @@ if (navToggle && nav) {
   });
 }
 
-if (consultForm && formStatus) {
-  consultForm.addEventListener("submit", (event) => {
+forms.forEach((form) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
-    consultForm.reset();
-    formStatus.textContent = "Thanks. Your consult request is ready for the next step.";
+    const status = form.querySelector("[data-form-status]");
+    const message = form.getAttribute("data-success-message") || "Thank you. Ali will review this and follow up with the right next step.";
+    form.reset();
+    if (status) {
+      status.textContent = message;
+    }
   });
-}
+});

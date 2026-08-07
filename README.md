@@ -1,25 +1,37 @@
-# Reimagined Nutrition Wix Embed
+﻿# Reimagined Nutrition Website
 
-Static source for a Reimagined Nutrition embed intended to be used inside a Wix HTML embed block.
+Static source for the Reimagined Nutrition website. The site is plain HTML, CSS, and JavaScript, so there is no build step required for local preview.
 
 ## Files
 
-- `wix-embed.html` - paste-ready embed code for Wix.
-- `index.html`, `styles.css`, `script.js` - current standalone site files kept as source/reference.
-- `assets/` - local image assets used by the standalone page.
-
-The current Wix embed was pulled from the public Claude artifact at:
-https://claude.ai/public/artifacts/ddaa59e3-87cd-4d5d-b48a-b524d0d52e17
-
-## Wix Embed Workflow
-
-1. Edit and test `wix-embed.html` locally.
-2. In Wix, add an **Embed HTML** element.
-3. Paste the contents of `wix-embed.html` into the embed code field.
-4. Set the embed element height in Wix so the full content is visible.
-
-If the embed uses images, host them publicly first and reference absolute `https://` URLs. Local files in `assets/` will not load from inside Wix unless they are uploaded or hosted.
+- `index.html` - homepage.
+- `specialized-recovery-meals.html` - specialized and recovery meals page.
+- `corporate-meals-office-lunches.html` - corporate meals and office lunches page.
+- `full-service-catering-events.html` - catering and events page.
+- `nutrition-counseling.html` - nutrition counseling page.
+- `food-service-consulting.html` - food service consulting page.
+- `about.html` - Ali Senatore bio page.
+- `contact-and-inquiry.html` - split nutrition and catering inquiry page.
+- `styles.css` and `script.js` - shared site styling and form behavior.
+- `assets/` - image assets used by the site.
+- `reimagined-nutrition-website-copy-v2.md` - working copy strategy and review document.
+- `wix-embed.html` - older Wix embed reference, not part of the GitHub Pages deployment workflow.
 
 ## Local Preview
 
-Open `wix-embed.html` directly in a browser for a quick preview. The standalone homepage can be previewed by opening `index.html`.
+Open `index.html` directly in a browser.
+
+## GitHub Pages Deployment
+
+This repo includes `.github/workflows/deploy-pages.yml`, which deploys the static site to GitHub Pages when changes are pushed to `main`.
+
+The workflow publishes only the production site files:
+
+- the eight public HTML pages
+- `styles.css`
+- `script.js`
+- the currently used logo, icon, and hero assets
+
+It intentionally does not publish the working copy document, the older Wix embed reference, screenshots, or unused saved images.
+
+Before pushing, create a GitHub repository, add it as `origin`, and enable GitHub Pages with **GitHub Actions** as the source.

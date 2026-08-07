@@ -1,0 +1,193 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Reimagined Nutrition</title>
+    <meta name="description" content="Start the nutrition questionnaire or request a catering proposal from Reimagined Nutrition in Bergen County NJ, North Jersey, NYC, and Rockland.">
+    <link rel="icon" type="image/png" href="assets/reimagined-nutrition-icon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="index.html" aria-label="Reimagined Nutrition home">
+        <img class="brand-logo" src="assets/reimagined-nutrition-logo-transparent.png" alt="Reimagined Nutrition">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="specialized-recovery-meals.html">Meals</a>
+        <a href="corporate-meals-office-lunches.html">Corporate</a>
+        <a href="full-service-catering-events.html">Events</a>
+        <a href="nutrition-counseling.html">Counseling</a>
+        <a href="about.html">About</a>
+        <a href="contact-and-inquiry.html" aria-current="page">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero compact" aria-labelledby="hero-title">
+        <img class="hero-image" src="assets/reimagined-nutrition-hero.png" alt="Kitchen table with a nutrition questionnaire and event inquiry notes.">
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Contact & Inquiry</p>
+          <h1 id="hero-title">Start the right Reimagined Nutrition inquiry.</h1>
+          <p class="hero-copy">Choose the path that fits what you need. Individuals and households begin with the nutrition questionnaire. Companies, hosts, and event leads request a catering proposal.</p>
+        </div>
+      </section>
+
+      <section class="section soft" id="nutrition-questionnaire">
+        <div class="section-heading">
+          <p class="eyebrow">Nutrition & Meals</p>
+          <h2>Nutrition, specialized meals, and recovery meal delivery.</h2>
+        </div>
+        <div class="grid-2">
+          <div>
+            <p class="lead">Use this path if you are looking for support for yourself, a child, a household, or an aging parent. This includes specialized meal plans, recurring meal delivery, recovery meal delivery, nutrition counseling, and medical nutrition therapy support.</p>
+            <p>Ali reviews your answers, then uses a 15-minute call to recommend the right plan.</p>
+            <p class="review-markup">[ALI REVIEW NEEDED: confirm nutrition questionnaire fields before form build]</p>
+          </div>
+          <form class="form-card" data-site-form data-success-message="Thank you. Ali will review your questionnaire and follow up about the 15-minute call.">
+            <label>Name
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>Location or delivery town
+              <input type="text" name="location" autocomplete="address-level2">
+            </label>
+            <label>Who are the meals for?
+              <select name="who">
+                <option value="">Select one</option>
+                <option>Myself</option>
+                <option>A child or family</option>
+                <option>An aging parent</option>
+                <option>A household</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>Health situation or goal
+              <textarea name="goal" rows="4"></textarea>
+            </label>
+            <label>Dietary restrictions and allergies
+              <textarea name="restrictions" rows="3"></textarea>
+            </label>
+            <label>Meals per week
+              <input type="text" name="meals-per-week">
+            </label>
+            <label>Timeline
+              <input type="text" name="timeline">
+            </label>
+            <button class="button button-primary" type="submit">Start the nutrition questionnaire</button>
+            <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section alt" id="catering-inquiry">
+        <div class="section-heading">
+          <p class="eyebrow">Catering, Corporate & Events</p>
+          <h2>Corporate meals, office lunches, and event catering.</h2>
+        </div>
+        <div class="grid-2">
+          <div>
+            <p class="lead">Use this path if you are ordering for a company, planning an office meal, hosting an event, or exploring full-service catering.</p>
+            <p>Ali reviews the inquiry, then uses a 15-minute call to confirm fit before preparing a proposal.</p>
+            <p class="review-markup">[ALI REVIEW NEEDED: confirm catering inquiry fields, service-style options, and required budget language]</p>
+          </div>
+          <form class="form-card" data-site-form data-success-message="Thank you. Ali will review your catering inquiry and follow up about the 15-minute call.">
+            <label>Company or host name
+              <input type="text" name="host" required>
+            </label>
+            <label>Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>Event type
+              <input type="text" name="event-type">
+            </label>
+            <label>Date
+              <input type="text" name="date">
+            </label>
+            <label>Location
+              <input type="text" name="location">
+            </label>
+            <label>Guest count
+              <input type="text" name="guest-count">
+            </label>
+            <label>Service style
+              <select name="service-style">
+                <option value="">Select one</option>
+                <option>Drop-off</option>
+                <option>Staffed</option>
+                <option>Full-service</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>Dietary needs across the group
+              <textarea name="dietary-needs" rows="3"></textarea>
+            </label>
+            <label>Budget range
+              <input type="text" name="budget">
+            </label>
+            <label>Anything else Ali should know?
+              <textarea name="message" rows="4"></textarea>
+            </label>
+            <button class="button button-primary" type="submit">Request a catering proposal</button>
+            <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">Service Area</p>
+          <h2>Bergen County NJ, North Jersey, Rockland County NY, and New York City.</h2>
+        </div>
+        <div>
+          <p class="lead">Delivery zones, service radius, fees, and lead times should be confirmed before publishing operational details.</p>
+          <p class="review-markup">[ALI REVIEW NEEDED: confirm delivery zones, fees, lead times, cancellation terms, and preferred contact details]</p>
+        </div>
+      </section>
+
+      <section class="section newsletter">
+        <div>
+          <p class="eyebrow">Seasonal Notes</p>
+          <h2>Seasonal menu updates and local farm highlights.</h2>
+          <p>Receive occasional notes from Ali's kitchen: seasonal menu ideas, local farm highlights, and practical food inspiration from Reimagined Nutrition.</p>
+          <p class="review-markup">[ALI REVIEW NEEDED: confirm passive-revenue items before adding any product language]</p>
+        </div>
+        <form class="form-card" data-site-form data-success-message="Thank you. You are on the list for seasonal menu updates.">
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <button class="button button-primary" type="submit">Get seasonal updates</button>
+          <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <strong>Ali Senatore, Executive Chef and Registered Dietitian Nutritionist (RDN)</strong>
+          <p>Serving Bergen County NJ, North Jersey, Rockland County NY, and New York City.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="specialized-recovery-meals.html">Specialized & Recovery Meals</a>
+          <a href="corporate-meals-office-lunches.html">Corporate Meals & Office Lunches</a>
+          <a href="full-service-catering-events.html">Full-Service Catering & Events</a>
+        </nav>
+        <div>
+          <strong>Seasonal menu updates</strong>
+          <p>Seasonal menu ideas, local farm highlights, and practical notes from Ali's kitchen.</p>
+        </div>
+      </div>
+      <p class="disclaimer">Reimagined Nutrition is not a substitute for medical advice. Always discuss changes to your nutrition, medication regimen, or medical care with your primary care provider or qualified healthcare professional.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

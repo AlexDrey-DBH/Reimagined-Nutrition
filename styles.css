@@ -1245,34 +1245,6 @@ textarea:focus {
   }
 }
 
-@media (min-width: 1061px) {
-  .questionnaire-intro::after {
-    border-right: 2px solid rgba(111, 78, 93, 0.34);
-    border-top: 2px solid rgba(111, 78, 93, 0.42);
-    border-top-right-radius: 44px;
-    content: "";
-    height: 78px;
-    pointer-events: none;
-    position: absolute;
-    right: clamp(-94px, -6vw, -58px);
-    top: 78px;
-    width: clamp(72px, 7vw, 116px);
-  }
-
-  .questionnaire-intro::before {
-    background: var(--gold);
-    border-radius: 999px;
-    box-shadow: 0 0 0 8px rgba(173, 128, 123, 0.12);
-    content: "";
-    height: 8px;
-    pointer-events: none;
-    position: absolute;
-    right: clamp(-105px, -6.8vw, -68px);
-    top: 152px;
-    width: 8px;
-  }
-}
-
 @media (max-width: 1060px) {
   .site-nav {
     background: rgba(247, 248, 242, 0.98);

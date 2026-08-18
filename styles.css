@@ -206,6 +206,10 @@ p {
   object-position: center 62%;
 }
 
+.counseling-hero .hero-image {
+  object-position: 72% center;
+}
+
 .about-hero .hero-image {
   height: calc(100% - 104px);
   left: auto;
@@ -1297,6 +1301,11 @@ textarea:focus {
 
   .events-hero .hero-image {
     object-position: 54% center;
+  }
+
+  .counseling-hero .hero-image {
+    object-position: 67% center;
+    opacity: 0.72;
   }
 
   .about-hero .hero-image {

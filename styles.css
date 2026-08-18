@@ -202,6 +202,10 @@ p {
   object-position: center 54%;
 }
 
+.events-hero .hero-image {
+  object-position: center 62%;
+}
+
 .hero-shade {
   background:
     linear-gradient(90deg, rgba(247, 248, 242, 0.98) 0%, rgba(247, 248, 242, 0.9) 34%, rgba(247, 248, 242, 0.36) 58%, rgba(247, 248, 242, 0.06) 100%),
@@ -1279,6 +1283,10 @@ textarea:focus {
 
   .corporate-hero .hero-image {
     object-position: 62% center;
+  }
+
+  .events-hero .hero-image {
+    object-position: 54% center;
   }
 
   .hero-actions,

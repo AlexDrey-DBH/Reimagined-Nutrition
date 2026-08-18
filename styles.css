@@ -480,6 +480,34 @@ h3 {
   text-align: center;
 }
 
+.portrait-frame,
+.image-frame {
+  aspect-ratio: 4 / 5;
+  background: var(--leaf);
+  border-radius: 8px;
+  box-shadow: 0 22px 48px rgba(41, 41, 55, 0.16);
+  margin: 32px 0 0;
+  overflow: hidden;
+}
+
+.portrait-frame {
+  max-width: 360px;
+}
+
+.image-frame {
+  margin-top: 0;
+  min-height: 360px;
+}
+
+.portrait-frame img,
+.image-frame img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
 .cta-with-image {
   align-items: center;
   display: grid;

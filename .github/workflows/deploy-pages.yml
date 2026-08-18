@@ -38,6 +38,7 @@ jobs:
           cp contact-and-inquiry.html _site/
           cp styles.css _site/
           cp script.js _site/
+          cp assets/reimagined-nutrition-ali-senatore.png _site/assets/
           cp assets/reimagined-nutrition-hero.png _site/assets/
           cp assets/reimagined-nutrition-icon.png _site/assets/
           cp assets/reimagined-nutrition-logo-transparent.png _site/assets/

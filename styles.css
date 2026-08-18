@@ -616,6 +616,10 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.service-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .method-list {
   display: grid;
   gap: 22px;
@@ -1158,6 +1162,12 @@ textarea:focus {
   color: rgba(247, 248, 242, 0.68);
   margin: 28px 0 0;
   padding-top: 20px;
+}
+
+@media (min-width: 1061px) and (max-width: 1240px) {
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 1060px) {

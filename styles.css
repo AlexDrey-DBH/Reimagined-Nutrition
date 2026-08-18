@@ -286,9 +286,21 @@ h3 {
   transition: color 180ms ease;
 }
 
-.program-card.featured .text-link:hover,
-.program-card.featured .text-link:focus-visible {
+#services .program-card {
+  transition: background 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+#services .program-card.featured .text-link,
+#services .program-card.featured .text-link:hover,
+#services .program-card.featured .text-link:focus-visible,
+#services .program-card:not(.featured):hover .text-link,
+#services .program-card:not(.featured):focus-within .text-link {
   color: #f2d36b;
+}
+
+#services .grid-3:has(.program-card:not(.featured):hover) .program-card.featured .text-link,
+#services .grid-3:has(.program-card:not(.featured):focus-within) .program-card.featured .text-link {
+  color: var(--leaf-dark);
 }
 
 .tooltip-term {
@@ -569,6 +581,20 @@ h3 {
   color: #292937;
 }
 
+#services .grid-3:has(.program-card:not(.featured):hover) .program-card.featured,
+#services .grid-3:has(.program-card:not(.featured):focus-within) .program-card.featured {
+  background: rgba(247, 248, 242, 0.92);
+  color: var(--ink);
+}
+
+#services .program-card:not(.featured):hover,
+#services .program-card:not(.featured):focus-within {
+  background: linear-gradient(180deg, #b6d0a8, #477263);
+  box-shadow: var(--shadow);
+  color: #292937;
+  transform: translateY(-3px);
+}
+
 .program-meta {
   color: var(--leaf-dark);
   font-size: 0.78rem;
@@ -581,6 +607,13 @@ h3 {
   color: #292937;
 }
 
+#services .grid-3:has(.program-card:not(.featured):hover) .program-card.featured .program-meta,
+#services .grid-3:has(.program-card:not(.featured):focus-within) .program-card.featured .program-meta,
+#services .program-card:not(.featured):hover .program-meta,
+#services .program-card:not(.featured):focus-within .program-meta {
+  color: #292937;
+}
+
 .program-card h3 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 2rem;
@@ -589,6 +622,18 @@ h3 {
 
 .featured p,
 .featured li {
+  color: rgba(247, 248, 242, 0.86);
+}
+
+#services .grid-3:has(.program-card:not(.featured):hover) .program-card.featured p,
+#services .grid-3:has(.program-card:not(.featured):focus-within) .program-card.featured p {
+  color: var(--muted);
+}
+
+#services .program-card:not(.featured):hover p,
+#services .program-card:not(.featured):focus-within p,
+#services .program-card:not(.featured):hover li,
+#services .program-card:not(.featured):focus-within li {
   color: rgba(247, 248, 242, 0.86);
 }
 

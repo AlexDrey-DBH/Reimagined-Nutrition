@@ -283,6 +283,12 @@ h3 {
   margin-top: 12px;
   text-decoration: underline;
   text-underline-offset: 4px;
+  transition: color 180ms ease;
+}
+
+.program-card.featured .text-link:hover,
+.program-card.featured .text-link:focus-visible {
+  color: #f2d36b;
 }
 
 .tooltip-term {

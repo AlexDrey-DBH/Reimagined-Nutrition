@@ -6,7 +6,7 @@
     <title>Contact Reimagined Nutrition</title>
     <meta name="description" content="Start the nutrition questionnaire or request a catering proposal from Reimagined Nutrition in Bergen County NJ, North Jersey, NYC, and Rockland.">
     <link rel="icon" type="image/png" href="assets/reimagined-nutrition-icon.png">
-    <link rel="stylesheet" href="styles.css?v=questionnaire-linework-20260818">
+    <link rel="stylesheet" href="styles.css?v=questionnaire-meal-options-20260818">
   </head>
   <body>
     <header class="site-header" data-header>
@@ -49,7 +49,7 @@
             <p class="lead">Use this path if you are looking for support for yourself, a child, a household, or an aging parent. This includes specialized meal plans, recurring meal delivery, recovery meal delivery, nutrition counseling, and medical nutrition therapy support.</p>
             <p>Ali reviews your answers, then uses a 15-minute call to recommend the right plan.</p>
             <p class="review-markup">[ALI REVIEW NEEDED: confirm nutrition questionnaire fields before form build]</p>
-            <p class="review-markup">[HUBSPOT SETUP NEEDED: replace this prototype with a HubSpot form and map contact, lifecycle stage, service interest, who meals are for, delivery town, health goals, dietary restrictions, meals per week, and timeline.]</p>
+            <p class="review-markup">[HUBSPOT SETUP NEEDED: replace this prototype with a HubSpot form and map contact, lifecycle stage, service interest, who meals are for, delivery town, health goals, dietary restrictions, days per week, meal types, and timeline.]</p>
           </div>
           <form class="form-card" data-site-form data-success-message="Thank you. Ali will review your questionnaire and follow up about the 15-minute call.">
             <label>Name
@@ -68,7 +68,6 @@
                 <option>A child or family</option>
                 <option>An aging parent</option>
                 <option>A household</option>
-                <option>My office</option>
                 <option>Not sure yet</option>
               </select>
             </label>
@@ -78,9 +77,18 @@
             <label>Dietary restrictions and allergies
               <textarea name="restrictions" rows="3"></textarea>
             </label>
-            <label>Meals per week
-              <input type="text" name="meals-per-week">
-            </label>
+            <fieldset class="choice-field">
+              <legend>How many days per week?</legend>
+              <label><input type="radio" name="days-per-week" value="3 days"> 3 days</label>
+              <label><input type="radio" name="days-per-week" value="5 days"> 5 days</label>
+              <label><input type="radio" name="days-per-week" value="7 days"> 7 days</label>
+            </fieldset>
+            <fieldset class="choice-field">
+              <legend>Which meals should those days include?</legend>
+              <label><input type="checkbox" name="meal-types" value="Breakfast"> Breakfast</label>
+              <label><input type="checkbox" name="meal-types" value="Lunch"> Lunch</label>
+              <label><input type="checkbox" name="meal-types" value="Dinner"> Dinner</label>
+            </fieldset>
             <label>Timeline
               <input type="text" name="timeline">
             </label>

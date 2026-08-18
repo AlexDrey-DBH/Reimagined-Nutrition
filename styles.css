@@ -1062,6 +1062,39 @@ label {
   gap: 8px;
 }
 
+.choice-field {
+  border: 1px solid rgba(71, 114, 99, 0.2);
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 14px;
+}
+
+.choice-field legend {
+  color: #3f514b;
+  font-size: 0.88rem;
+  font-weight: 760;
+  padding: 0 6px;
+}
+
+.choice-field label {
+  align-items: center;
+  color: var(--ink);
+  display: flex;
+  font-size: 1rem;
+  font-weight: 520;
+  gap: 10px;
+}
+
+.choice-field input {
+  accent-color: var(--leaf-dark);
+  flex: 0 0 auto;
+  min-height: auto;
+  padding: 0;
+  width: auto;
+}
+
 input,
 select,
 textarea {

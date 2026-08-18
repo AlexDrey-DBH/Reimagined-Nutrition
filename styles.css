@@ -99,10 +99,6 @@ p {
   z-index: 20;
 }
 
-.site-header::before {
-  display: none;
-}
-
 .brand {
   align-items: center;
   display: inline-flex;
@@ -1233,24 +1229,6 @@ textarea:focus {
 }
 
 @media (min-width: 1061px) {
-  .site-header::before {
-    background:
-      radial-gradient(ellipse at 14% 60%, rgba(182, 208, 168, 0.56) 0 14%, transparent 15%),
-      radial-gradient(ellipse at 31% 42%, rgba(159, 191, 147, 0.42) 0 13%, transparent 14%),
-      radial-gradient(ellipse at 49% 63%, rgba(182, 208, 168, 0.46) 0 13%, transparent 14%),
-      linear-gradient(96deg, transparent 0 18%, rgba(47, 84, 74, 0.24) 18% 20%, transparent 20% 100%);
-    content: "";
-    display: block;
-    height: 42px;
-    left: clamp(205px, 23vw, 360px);
-    opacity: 0.28;
-    pointer-events: none;
-    position: absolute;
-    top: 15px;
-    transform: rotate(-4deg);
-    width: 178px;
-  }
-
   .one-line-desktop {
     font-size: clamp(2.6rem, 3.6vw, 3.65rem);
     white-space: nowrap;

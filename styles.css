@@ -198,6 +198,10 @@ p {
   width: 100%;
 }
 
+.corporate-hero .hero-image {
+  object-position: center 54%;
+}
+
 .hero-shade {
   background:
     linear-gradient(90deg, rgba(247, 248, 242, 0.98) 0%, rgba(247, 248, 242, 0.9) 34%, rgba(247, 248, 242, 0.36) 58%, rgba(247, 248, 242, 0.06) 100%),
@@ -1271,6 +1275,10 @@ textarea:focus {
     background:
       linear-gradient(180deg, rgba(247, 248, 242, 0.99) 0%, rgba(247, 248, 242, 0.94) 43%, rgba(247, 248, 242, 0.82) 100%),
       linear-gradient(0deg, rgba(247, 248, 242, 0.52), rgba(247, 248, 242, 0.18));
+  }
+
+  .corporate-hero .hero-image {
+    object-position: 62% center;
   }
 
   .hero-actions,

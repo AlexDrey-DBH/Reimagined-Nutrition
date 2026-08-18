@@ -542,6 +542,18 @@ h3 {
   grid-template-columns: minmax(240px, 0.78fr) minmax(280px, 1.22fr);
 }
 
+.portrait-split {
+  align-items: center;
+  column-gap: clamp(28px, 5vw, 76px);
+  grid-template-columns: minmax(260px, 360px) minmax(320px, 620px);
+  justify-content: center;
+}
+
+.portrait-split .portrait-frame {
+  margin-top: 0;
+  width: 100%;
+}
+
 .section-heading {
   align-items: end;
   display: flex;
@@ -1118,6 +1130,14 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .portrait-split {
+    gap: 28px;
+  }
+
+  .portrait-split .portrait-frame {
+    max-width: 340px;
+  }
+
   .section-heading {
     align-items: start;
     flex-direction: column;
@@ -1200,6 +1220,14 @@ textarea:focus {
     font-size: 0.96rem;
     line-height: 1.55;
     max-width: 34ch;
+  }
+
+  .portrait-split {
+    gap: 22px;
+  }
+
+  .portrait-split .portrait-frame {
+    max-width: min(320px, 100%);
   }
 
   .intro-item,

@@ -206,6 +206,16 @@ p {
   object-position: center 62%;
 }
 
+.about-hero .hero-image {
+  height: calc(100% - 104px);
+  left: auto;
+  object-fit: cover;
+  object-position: center 42%;
+  right: clamp(18px, 5vw, 64px);
+  top: 104px;
+  width: min(42vw, 620px);
+}
+
 .hero-shade {
   background:
     linear-gradient(90deg, rgba(247, 248, 242, 0.98) 0%, rgba(247, 248, 242, 0.9) 34%, rgba(247, 248, 242, 0.36) 58%, rgba(247, 248, 242, 0.06) 100%),
@@ -1287,6 +1297,14 @@ textarea:focus {
 
   .events-hero .hero-image {
     object-position: 54% center;
+  }
+
+  .about-hero .hero-image {
+    height: 100%;
+    inset: 0;
+    object-position: center 30%;
+    opacity: 0.64;
+    width: 100%;
   }
 
   .hero-actions,

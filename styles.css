@@ -656,6 +656,10 @@ h3 {
   grid-template-columns: minmax(240px, 0.78fr) minmax(280px, 1.22fr);
 }
 
+.service-area-split {
+  align-items: center;
+}
+
 .portrait-split {
   align-items: center;
   column-gap: clamp(28px, 5vw, 76px);

@@ -725,18 +725,13 @@ h3 {
   display: none;
 }
 
-.service-icon-placeholder {
-  align-items: center;
-  border: 2px dashed var(--review-magenta);
-  border-radius: 8px;
-  color: var(--review-magenta);
-  display: inline-flex;
-  font-size: 0.72rem;
-  font-weight: 820;
-  height: 48px;
-  justify-content: center;
+.service-icon {
+  display: block;
+  height: 56px;
   margin-bottom: 18px;
-  width: 48px;
+  object-fit: contain;
+  object-position: left center;
+  width: 56px;
 }
 
 .method-list {

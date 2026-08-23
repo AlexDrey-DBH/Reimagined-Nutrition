@@ -239,6 +239,65 @@ p {
   z-index: 1;
 }
 
+.contact-chooser-hero {
+  align-items: center;
+  display: flex;
+  min-height: 62vh;
+}
+
+.contact-chooser-hero .hero-image {
+  opacity: 0.72;
+}
+
+.contact-chooser-hero .hero-shade {
+  background:
+    linear-gradient(90deg, rgba(247, 248, 242, 0.84), rgba(247, 248, 242, 0.42)),
+    linear-gradient(0deg, rgba(41, 41, 55, 0.2), rgba(111, 78, 93, 0.12));
+}
+
+.contact-chooser-hero::after {
+  display: none;
+}
+
+.contact-chooser-hero .hero-content {
+  background:
+    linear-gradient(145deg, rgba(41, 41, 55, 0.96), rgba(47, 84, 74, 0.92)),
+    var(--wood-grain-dark);
+  background-size: auto, var(--wood-grain-dark-size);
+  border: 1px solid rgba(247, 248, 242, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 28px 70px rgba(23, 23, 34, 0.28);
+  color: var(--panel);
+  max-width: 620px;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.contact-chooser-hero .eyebrow {
+  color: var(--sun);
+}
+
+.contact-chooser-hero h1 {
+  color: var(--panel);
+  margin-bottom: 22px;
+}
+
+.contact-chooser-hero .hero-actions {
+  margin-top: 0;
+}
+
+.contact-chooser-hero .button-light {
+  background: rgba(247, 248, 242, 0.08);
+  border-color: rgba(247, 248, 242, 0.42);
+  color: var(--panel);
+}
+
+.contact-chooser-hero .button-light:hover,
+.contact-chooser-hero .button-light:focus-visible {
+  background: var(--sun);
+  border-color: var(--sun);
+  color: var(--ink);
+}
+
 .eyebrow {
   color: var(--leaf-dark);
   font-size: 0.78rem;

@@ -721,6 +721,24 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.service-grid .card-rule::before {
+  display: none;
+}
+
+.service-icon-placeholder {
+  align-items: center;
+  border: 2px dashed var(--review-magenta);
+  border-radius: 8px;
+  color: var(--review-magenta);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 820;
+  height: 48px;
+  justify-content: center;
+  margin-bottom: 18px;
+  width: 48px;
+}
+
 .method-list {
   display: grid;
   gap: 22px;

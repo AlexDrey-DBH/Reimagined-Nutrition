@@ -42,6 +42,7 @@ jobs:
           cp assets/reimagined-nutrition-hero.png _site/assets/
           cp assets/reimagined-nutrition-icon.png _site/assets/
           cp assets/reimagined-nutrition-logo-transparent.png _site/assets/
+          cp assets/2026-reimagined-catering-guide.pdf _site/assets/
           touch _site/.nojekyll
 
       - name: Upload Pages artifact

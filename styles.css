@@ -319,10 +319,10 @@ h1 {
 .hero-title-note {
   color: var(--leaf-dark);
   display: block;
-  font-size: clamp(1.55rem, 3vw, 2.65rem);
+  font-size: clamp(2.35rem, 4.8vw, 5.15rem);
   font-style: italic;
-  line-height: 1.12;
-  margin-top: 0.18em;
+  line-height: 1.03;
+  margin-top: 0.08em;
 }
 
 .compact h1 {

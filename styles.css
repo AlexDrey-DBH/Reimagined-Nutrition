@@ -1148,8 +1148,57 @@ textarea:focus {
   color: var(--panel);
 }
 
+.newsletter .form-card {
+  align-self: center;
+  background:
+    linear-gradient(135deg, rgba(247, 248, 242, 0.97), rgba(236, 239, 232, 0.91)),
+    var(--wood-grain);
+  background-size: auto, var(--wood-grain-size);
+  border-color: rgba(247, 248, 242, 0.34);
+  box-shadow: 0 22px 54px rgba(23, 23, 34, 0.2);
+  gap: 14px 16px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-left: auto;
+  max-width: 560px;
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.newsletter .form-card::before {
+  background: linear-gradient(90deg, var(--cocoa), var(--gold), var(--sun));
+  border-radius: 999px;
+  content: "";
+  display: block;
+  grid-column: 1 / -1;
+  height: 4px;
+  width: 76px;
+}
+
+.newsletter .form-card label {
+  color: var(--leaf-dark);
+  gap: 10px;
+  grid-column: 1;
+}
+
 .newsletter input {
-  background: rgba(247, 248, 242, 0.96);
+  background: rgba(255, 255, 255, 0.74);
+  border-color: rgba(71, 114, 99, 0.26);
+  min-height: 52px;
+}
+
+.newsletter .form-card .button {
+  align-self: end;
+  grid-column: 2;
+  min-width: 230px;
+  padding-inline: 26px;
+}
+
+.newsletter .form-status {
+  color: var(--leaf-dark);
+  grid-column: 1 / -1;
+}
+
+.newsletter .form-card:focus-within {
+  border-color: rgba(242, 211, 107, 0.6);
 }
 
 .site-footer {
@@ -1309,6 +1358,18 @@ textarea:focus {
 
   .method-list p {
     grid-column: 2;
+  }
+
+  .newsletter .form-card {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .newsletter .form-card .button {
+    grid-column: 1;
+    min-width: 0;
+    width: 100%;
   }
 }
 

@@ -740,6 +740,32 @@ h3 {
   width: 56px;
 }
 
+.icon-curation-placeholder {
+  align-items: center;
+  border: 2px dashed var(--review-magenta);
+  border-radius: 8px;
+  color: var(--review-magenta);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 820;
+  height: 48px;
+  justify-content: center;
+  margin-bottom: 18px;
+  width: 48px;
+}
+
+.card-rule:has(.icon-curation-placeholder)::before {
+  display: none;
+}
+
+.program-card .icon-curation-placeholder {
+  margin-bottom: 24px;
+}
+
+.program-card .program-meta:has(+ .icon-curation-placeholder) {
+  margin-bottom: 18px;
+}
+
 .method-list {
   display: grid;
   gap: 22px;

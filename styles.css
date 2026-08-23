@@ -241,18 +241,22 @@ p {
 
 .contact-chooser-hero {
   align-items: center;
+  background:
+    linear-gradient(135deg, rgba(220, 233, 212, 0.42), rgba(182, 208, 168, 0.16) 52%, rgba(247, 248, 242, 0.18)),
+    var(--leaf);
   display: flex;
+  justify-content: center;
   min-height: 62vh;
+  padding-inline: clamp(20px, 5vw, 64px);
+  text-align: center;
 }
 
 .contact-chooser-hero .hero-image {
-  opacity: 0.72;
+  display: none;
 }
 
 .contact-chooser-hero .hero-shade {
-  background:
-    linear-gradient(90deg, rgba(247, 248, 242, 0.84), rgba(247, 248, 242, 0.42)),
-    linear-gradient(0deg, rgba(41, 41, 55, 0.2), rgba(111, 78, 93, 0.12));
+  display: none;
 }
 
 .contact-chooser-hero::after {
@@ -270,6 +274,7 @@ p {
   color: var(--panel);
   max-width: 620px;
   padding: clamp(28px, 4vw, 48px);
+  width: min(620px, 100%);
 }
 
 .contact-chooser-hero .eyebrow {
@@ -282,6 +287,7 @@ p {
 }
 
 .contact-chooser-hero .hero-actions {
+  justify-content: center;
   margin-top: 0;
 }
 
@@ -1473,6 +1479,16 @@ textarea:focus {
 
   .hero.compact {
     min-height: auto;
+  }
+
+  .contact-chooser-hero.hero.compact {
+    min-height: 62vh;
+    padding-block: 112px 64px;
+  }
+
+  .contact-chooser-hero .hero-content {
+    margin-inline: auto;
+    width: min(100%, calc(100vw - 48px), 420px);
   }
 
   .hero-shade,

@@ -222,9 +222,9 @@ p {
   left: auto;
   object-fit: cover;
   object-position: center 42%;
-  right: clamp(18px, 5vw, 64px);
+  right: clamp(18px, 3vw, 42px);
   top: 104px;
-  width: min(42vw, 620px);
+  width: min(46vw, 720px);
 }
 
 .hero-shade {

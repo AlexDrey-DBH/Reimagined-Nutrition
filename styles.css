@@ -873,6 +873,10 @@ h3 {
 }
 
 .recurring-service-content .lead {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0;
   max-width: none;
 }
@@ -1968,6 +1972,10 @@ textarea:focus {
   .recurring-service-content {
     gap: 26px;
     grid-template-columns: 1fr;
+  }
+
+  .recurring-service-content .lead {
+    display: block;
   }
 
   .recurring-meal-prep-placeholder {

@@ -862,7 +862,7 @@ h3 {
 
 .recurring-service-section h2 {
   margin: 0 0 28px;
-  max-width: 760px;
+  max-width: none;
 }
 
 .recurring-service-content {

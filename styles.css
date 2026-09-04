@@ -402,6 +402,10 @@ h1 {
   margin-top: 0.08em;
 }
 
+.hero-title-lock {
+  white-space: nowrap;
+}
+
 .compact h1 {
   font-size: clamp(2.8rem, 5.4vw, 5.2rem);
 }
@@ -2202,6 +2206,10 @@ textarea:focus {
     line-height: 1.06;
     margin-bottom: 24px;
     max-width: 11.5ch;
+  }
+
+  .hero:not(.compact) #hero-title {
+    max-width: 100%;
   }
 
   h2 {

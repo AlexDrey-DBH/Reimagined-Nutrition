@@ -406,6 +406,10 @@ h1 {
   white-space: nowrap;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 .compact h1 {
   font-size: clamp(2.8rem, 5.4vw, 5.2rem);
 }

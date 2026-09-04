@@ -1195,23 +1195,40 @@ h3 {
   margin: 28px 0 18px;
 }
 
-.about-final-cta > div {
+.about-final-layout {
+  align-items: center;
   display: grid;
-  gap: 0 clamp(24px, 4vw, 64px);
-  grid-template-columns: minmax(120px, 0.25fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 72px);
+  grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1fr);
   margin-inline: auto;
   max-width: 1080px;
 }
 
-.about-final-cta .section-heading {
-  grid-column: 1 / -1;
+.about-final-plate {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin: 0;
+  max-width: 460px;
+  overflow: hidden;
+  width: 100%;
 }
 
-.about-final-cta .lead,
-.about-final-cta .button-row,
-.about-final-cta .review-markup {
-  grid-column: 2;
-  margin-left: 0;
+.about-final-plate img {
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.08);
+  width: 100%;
+}
+
+.about-final-content {
+  max-width: 620px;
+}
+
+.about-final-content h2 {
+  margin-top: 0;
 }
 
 .image-placeholder {
@@ -2150,14 +2167,12 @@ textarea:focus {
     width: clamp(88px, 20vw, 140px);
   }
 
-  .about-final-cta > div {
+  .about-final-layout {
     grid-template-columns: 1fr;
   }
 
-  .about-final-cta .lead,
-  .about-final-cta .button-row,
-  .about-final-cta .review-markup {
-    grid-column: 1;
+  .about-final-plate {
+    margin-inline: auto;
   }
 
   .method-list article {

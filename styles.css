@@ -1040,6 +1040,27 @@ h3 {
   display: none;
 }
 
+.support-card {
+  align-items: start;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 62px minmax(0, 1fr);
+}
+
+.support-card .service-icon {
+  height: 62px;
+  margin: 2px 0 0;
+  width: 62px;
+}
+
+.support-card-copy {
+  min-width: 0;
+}
+
+.support-card-copy > :last-child {
+  margin-bottom: 0;
+}
+
 .program-card .icon-curation-placeholder {
   margin-bottom: 24px;
 }

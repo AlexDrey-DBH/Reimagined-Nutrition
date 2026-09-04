@@ -1,7 +1,7 @@
 const siteFooterMarkup = `
   <div class="footer-grid">
     <div>
-      <strong>Ali Senatore, Executive Chef and Registered Dietitian Nutritionist (RDN)</strong>
+      <strong>Ali Senatore, Executive Chef and Registered Dietitian Nutritionist (RDN, CDN)</strong>
       <p>Serving Bergen County NJ, North Jersey, Rockland County NY, and New York City.</p>
       <a class="yelp-badge" href="https://www.yelp.com/biz/reimagined-nutrition-maywood" target="_blank" rel="noopener" aria-label="Find Reimagined Nutrition on Yelp">
         <img class="yelp-badge-mark" src="assets/yelp-burst.svg" alt="">

@@ -1738,6 +1738,23 @@ textarea:focus {
   box-shadow: var(--shadow);
 }
 
+.hubspot-form {
+  background: rgba(247, 248, 242, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.hubspot-form .hs-form-frame {
+  min-height: 180px;
+}
+
+.hubspot-form-on-dark {
+  margin-top: 28px;
+  text-align: left;
+}
+
 .newsletter {
   background:
     linear-gradient(100deg, rgba(111, 78, 93, 0.78), rgba(23, 58, 51, 0.34)),
@@ -1767,6 +1784,10 @@ textarea:focus {
   margin-left: auto;
   max-width: 560px;
   padding: clamp(20px, 3vw, 30px);
+}
+
+.newsletter .hubspot-form {
+  display: block;
 }
 
 .newsletter .form-card label {

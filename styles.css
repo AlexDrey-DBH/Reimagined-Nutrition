@@ -1284,6 +1284,26 @@ h3 {
   min-height: 360px;
 }
 
+.package-catering-card {
+  overflow: hidden;
+  position: relative;
+}
+
+.package-catering-card > :not(.package-catering-image) {
+  max-width: 56%;
+  position: relative;
+  z-index: 1;
+}
+
+.package-catering-image {
+  bottom: 14px;
+  display: block;
+  mix-blend-mode: multiply;
+  position: absolute;
+  right: 14px;
+  width: min(42%, 190px);
+}
+
 .program-card.featured {
   background: linear-gradient(180deg, var(--active-green-soft), var(--active-green));
   color: var(--panel);
@@ -2361,6 +2381,17 @@ textarea:focus {
 
   .program-card {
     min-height: auto;
+  }
+
+  .package-catering-card > :not(.package-catering-image) {
+    max-width: none;
+  }
+
+  .package-catering-image {
+    margin: 24px auto 0;
+    mix-blend-mode: multiply;
+    position: static;
+    width: min(190px, 58%);
   }
 
   .program-meta {

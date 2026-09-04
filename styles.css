@@ -897,23 +897,16 @@ h3 {
   margin: 0 0 12px;
 }
 
-.recurring-meal-prep-placeholder {
-  align-items: center;
-  aspect-ratio: 16 / 7;
-  background: rgba(255, 0, 255, 0.04);
-  border: 2px dashed var(--review-magenta);
-  border-radius: 8px;
-  color: var(--review-magenta);
-  display: flex;
-  font-size: 0.78rem;
-  font-weight: 820;
-  justify-content: center;
-  letter-spacing: 0.04em;
+.recurring-meal-prep {
   margin: 40px 0 0;
   max-width: 1120px;
-  padding: 24px;
-  text-align: center;
-  text-transform: uppercase;
+  width: 100%;
+}
+
+.recurring-meal-prep img {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 .section-heading {
@@ -2159,11 +2152,6 @@ textarea:focus {
 
   .recurring-service-content .lead {
     display: block;
-  }
-
-  .recurring-meal-prep-placeholder {
-    aspect-ratio: 16 / 8;
-    max-width: none;
   }
 
   .food-feature-image {

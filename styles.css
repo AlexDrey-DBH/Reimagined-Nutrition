@@ -1788,10 +1788,66 @@ textarea:focus {
   border-radius: 8px;
   box-shadow: var(--shadow);
   padding: clamp(20px, 3vw, 32px);
+  --hsf-global__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-global__font-size: 16px;
+  --hsf-global__color: #292937;
+  --hsf-global-error__color: #8d3d46;
+  --hsf-row__horizontal-spacing: 16px;
+  --hsf-row__vertical-spacing: 16px;
+  --hsf-module__vertical-spacing: 16px;
+  --hsf-background__background-color: transparent;
+  --hsf-background__border-style: none;
+  --hsf-background__border-width: 0;
+  --hsf-background__border-radius: 0;
+  --hsf-background__padding: 0;
+  --hsf-field-label__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-field-label__font-size: 14px;
+  --hsf-field-label__color: #2f544a;
+  --hsf-field-label-requiredindicator__color: #8d3d46;
+  --hsf-field-description__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-field-description__color: #3d4a43;
+  --hsf-field-footer__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-field-footer__color: #3d4a43;
+  --hsf-field-input__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-field-input__color: #292937;
+  --hsf-field-input__background-color: #f7f8f2;
+  --hsf-field-input__placeholder-color: #6c766f;
+  --hsf-field-input__border-color: rgba(71, 114, 99, 0.2);
+  --hsf-field-input__border-width: 1px;
+  --hsf-field-input__border-style: solid;
+  --hsf-field-input__border-radius: 8px;
+  --hsf-field-input__padding: 12px 14px;
+  --hsf-field-textarea__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-field-textarea__color: #292937;
+  --hsf-field-textarea__background-color: #f7f8f2;
+  --hsf-field-textarea__placeholder-color: #6c766f;
+  --hsf-field-textarea__border-color: rgba(71, 114, 99, 0.2);
+  --hsf-field-textarea__border-width: 1px;
+  --hsf-field-textarea__border-style: solid;
+  --hsf-field-textarea__border-radius: 8px;
+  --hsf-field-textarea__padding: 12px 14px;
+  --hsf-button__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-button__font-size: 0.94rem;
+  --hsf-button__color: #f7f8f2;
+  --hsf-button__background-color: #2f544a;
+  --hsf-button__border-radius: 999px;
+  --hsf-button__padding: 14px 24px;
+  --hsf-button__box-shadow: 0 14px 28px rgba(47, 84, 74, 0.22);
+  --hsf-infoalert__font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hsf-infoalert__color: #2f544a;
 }
 
 .hubspot-form .hs-form-frame {
+  display: block;
   min-height: 180px;
+  width: 100%;
+}
+
+.hubspot-form .hs-form-frame iframe {
+  border: 0;
+  display: block;
+  max-width: 100%;
+  width: 100% !important;
 }
 
 .hubspot-form-on-dark {

@@ -885,6 +885,40 @@ h3 {
   margin: 0 0 24px;
 }
 
+.food-feature-meals {
+  display: grid;
+  gap: 24px;
+  justify-self: center;
+  max-width: 420px;
+  min-width: 0;
+  width: 100%;
+}
+
+.food-feature-meal {
+  aspect-ratio: 294 / 235;
+  margin: 0;
+  position: relative;
+}
+
+.food-feature-meal img {
+  display: block;
+  height: auto;
+  left: 50%;
+  max-width: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: calc(100% * 235 / 294);
+}
+
+.food-feature-meal-secondary {
+  aspect-ratio: 302 / 241;
+}
+
+.food-feature-meal-secondary img {
+  width: calc(100% * 241 / 302);
+}
+
 .food-feature-content .lead {
   margin: 0 0 26px;
 }
@@ -2238,6 +2272,10 @@ textarea:focus {
   .food-feature {
     gap: 28px;
     grid-template-columns: 1fr;
+  }
+
+  .food-feature-meal-secondary {
+    display: none;
   }
 
   .recurring-service-content {

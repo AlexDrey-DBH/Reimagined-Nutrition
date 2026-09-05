@@ -1677,6 +1677,42 @@ ul.bullet-list li::before,
   margin: 28px 0;
 }
 
+.macro-estimate-label {
+  font-size: 0.85rem;
+  margin: 20px 0 0;
+}
+
+.macro-verification {
+  color: var(--review-magenta);
+  cursor: help;
+  display: inline-block;
+  font-weight: 820;
+  position: relative;
+}
+
+.macro-verification-note {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 12px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 180px;
+  z-index: 3;
+}
+
+.macro-verification:hover .macro-verification-note,
+.macro-verification:focus .macro-verification-note {
+  display: block;
+}
+
 .macro-grid div {
   background: var(--leaf-soft);
   border: 1px solid rgba(71, 114, 99, 0.16);

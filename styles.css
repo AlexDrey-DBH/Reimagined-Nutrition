@@ -454,6 +454,19 @@ h3 {
   position: relative;
 }
 
+.pull-quote > p {
+  margin: 0;
+}
+
+.quote-attribution {
+  font-size: 0.85rem;
+  margin-top: 14px;
+}
+
+.quote-attribution cite {
+  font-style: normal;
+}
+
 .pull-quote::before {
   color: var(--cocoa);
   content: "\201C";

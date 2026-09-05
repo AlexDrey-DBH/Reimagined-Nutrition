@@ -12,14 +12,12 @@
   </head>
   <body>
     <header class="site-header" data-header>
+      <!-- Generated from navigation.json by scripts/sync-navigation.mjs. -->
       <a class="brand" href="index.html" aria-label="Reimagined Nutrition home">
         <img class="brand-logo" src="assets/reimagined-nutrition-logo-transparent.png" alt="Reimagined Nutrition">
       </a>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle>
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="site-nav" aria-label="Primary navigation" data-nav>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
         <a href="specialized-recovery-meals.html">Meals</a>
         <a href="corporate-meals-office-lunches.html">Office</a>
         <a href="full-service-catering-events.html">Catering</a>
@@ -277,7 +275,7 @@
       }
     </script>
     <script src="script.js"></script>
-    <script src="footer.js"></script>
+    <script src="footer.js?v=59d3e0d615ab"></script>
     <script src="https://js-na2.hsforms.net/forms/embed/247079971.js" defer></script>
     <!-- Start of HubSpot Embed Code -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247079971.js"></script>

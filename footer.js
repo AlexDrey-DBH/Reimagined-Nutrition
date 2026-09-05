@@ -9,13 +9,14 @@ const siteFooterMarkup = `
       </a>
     </div>
     <nav class="footer-links" aria-label="Footer navigation">
+      <!-- Generated from navigation.json by scripts/sync-navigation.mjs. -->
       <a href="index.html">Home</a>
-      <a href="specialized-recovery-meals.html">Specialized &amp; Recovery Meals</a>
-      <a href="nutrition-counseling.html">Nutrition Counseling</a>
-      <a href="corporate-meals-office-lunches.html">Corporate Meals &amp; Office Lunches</a>
-      <a href="full-service-catering-events.html">Full-Service Catering &amp; Events</a>
+      <a href="specialized-recovery-meals.html">Meals</a>
+      <a href="corporate-meals-office-lunches.html">Office</a>
+      <a href="full-service-catering-events.html">Catering</a>
+      <a href="nutrition-counseling.html">Counseling</a>
       <a href="about.html">About</a>
-      <a href="contact-and-inquiry.html">Contact &amp; Inquiry</a>
+      <a href="contact-and-inquiry.html">Contact</a>
     </nav>
   </div>
   <p class="disclaimer">Reimagined Nutrition is not a substitute for medical advice. Always discuss changes to your nutrition, medication regimen, or medical care with your primary care provider or qualified healthcare professional.</p>

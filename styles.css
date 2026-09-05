@@ -2167,12 +2167,12 @@ textarea:focus {
   max-width: none;
 }
 
-.newsletter-compact .form-card {
+.newsletter.newsletter-compact .form-card {
   background: none;
   border: 0;
   box-shadow: none;
   margin: 0;
-  max-width: none;
+  max-width: 560px;
   min-width: 0;
   padding: 0;
   width: 100%;

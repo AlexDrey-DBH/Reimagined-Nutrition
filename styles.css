@@ -897,18 +897,6 @@ h3 {
   margin: 0 0 12px;
 }
 
-.recurring-meal-prep {
-  margin: 40px 0 0;
-  max-width: 1120px;
-  width: 100%;
-}
-
-.recurring-meal-prep img {
-  display: block;
-  height: auto;
-  width: 100%;
-}
-
 .section-heading {
   align-items: end;
   display: flex;
@@ -1641,22 +1629,12 @@ ul.bullet-list li::before,
   max-width: 1120px;
 }
 
-.meal-side-image-placeholder {
-  align-items: center;
-  aspect-ratio: 4 / 3;
-  background: rgba(255, 0, 255, 0.04);
-  border: 2px dashed var(--review-magenta);
-  border-radius: 8px;
-  color: var(--review-magenta);
-  display: flex;
-  font-size: 0.78rem;
-  font-weight: 820;
-  justify-content: center;
-  letter-spacing: 0.04em;
-  margin: 28px 0 0;
-  grid-column: 1 / -1;
-  text-align: center;
-  text-transform: uppercase;
+.sample-meal-image {
+  display: block;
+  height: auto;
+  margin: 24px auto;
+  max-width: 100%;
+  width: 235px;
 }
 
 .meal-card {

@@ -1629,10 +1629,19 @@ ul.bullet-list li::before,
   max-width: 1120px;
 }
 
+.sample-meal-photo {
+  align-items: center;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: center;
+  margin: 28px 0 0;
+}
+
 .sample-meal-image {
   display: block;
   height: auto;
-  margin: 24px auto;
+  margin: 0;
   max-width: 100%;
   width: 235px;
 }

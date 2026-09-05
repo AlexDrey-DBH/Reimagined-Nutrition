@@ -941,6 +941,11 @@ h3 {
   display: block;
 }
 
+.recurring-service-section > .eyebrow,
+.recurring-service-section > h2 {
+  text-align: center;
+}
+
 .recurring-service-section h2 {
   margin: 0 0 28px;
   max-width: none;
@@ -950,6 +955,7 @@ h3 {
   column-gap: clamp(64px, 8vw, 132px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-inline: auto;
   max-width: 1120px;
 }
 

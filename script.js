@@ -2,6 +2,34 @@
 const nav = document.querySelector("[data-nav]");
 const forms = document.querySelectorAll("[data-site-form]");
 
+const supportTerms = document.querySelectorAll(".pill-list .tooltip-term");
+
+function positionSupportTooltip(term) {
+  const bubble = term.querySelector(".tooltip-bubble");
+  if (!bubble) return;
+  const viewportWidth = document.documentElement.clientWidth;
+  const bounds = term.getBoundingClientRect();
+  const width = bubble.getBoundingClientRect().width || Math.min(300, viewportWidth - 48);
+  const termCenter = bounds.left + bounds.width / 2;
+  const center = Math.max(24 + width / 2, Math.min(termCenter, viewportWidth - 24 - width / 2));
+  bubble.style.setProperty("--tooltip-left", `${center - bounds.left}px`);
+  bubble.style.setProperty("--tooltip-arrow", `${Math.max(14, Math.min(width - 14, termCenter - center + width / 2))}px`);
+}
+
+supportTerms.forEach((term, index) => {
+  const bubble = term.querySelector(".tooltip-bubble");
+  if (!bubble) return;
+  bubble.id ||= `support-tooltip-${index + 1}`;
+  bubble.setAttribute("role", "tooltip");
+  term.setAttribute("aria-describedby", bubble.id);
+  term.addEventListener("pointerenter", () => positionSupportTooltip(term));
+  term.addEventListener("focus", () => positionSupportTooltip(term));
+});
+
+if (supportTerms.length) {
+  window.addEventListener("resize", () => supportTerms.forEach(positionSupportTooltip));
+}
+
 if (navToggle && nav) {
   navToggle.addEventListener("click", () => {
     const isOpen = document.body.classList.toggle("nav-open");

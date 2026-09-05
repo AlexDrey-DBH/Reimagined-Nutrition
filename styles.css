@@ -1532,7 +1532,7 @@ ul.bullet-list li::before,
   margin-top: 22px;
 }
 
-.pill-list span {
+.pill-list > span {
   background: rgba(247, 248, 242, 0.82);
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -1552,34 +1552,18 @@ ul.bullet-list li::before,
   outline-offset: 3px;
 }
 
-.pill-list .tooltip-start .tooltip-bubble {
-  left: 0;
-  transform: translate(0, 6px);
+.pill-list .tooltip-bubble {
+  display: none;
+  left: var(--tooltip-left, 50%);
 }
 
-.pill-list .tooltip-start .tooltip-bubble::after {
-  left: 28px;
+.pill-list .tooltip-bubble::after {
+  left: var(--tooltip-arrow, 50%);
 }
 
-.pill-list .tooltip-start:hover .tooltip-bubble,
-.pill-list .tooltip-start:focus-visible .tooltip-bubble {
-  transform: translate(0, 0);
-}
-
-.pill-list .tooltip-end .tooltip-bubble {
-  left: auto;
-  right: 0;
-  transform: translate(0, 6px);
-}
-
-.pill-list .tooltip-end .tooltip-bubble::after {
-  left: auto;
-  right: 28px;
-}
-
-.pill-list .tooltip-end:hover .tooltip-bubble,
-.pill-list .tooltip-end:focus-visible .tooltip-bubble {
-  transform: translate(0, 0);
+.pill-list .tooltip-term:hover .tooltip-bubble,
+.pill-list .tooltip-term:focus-visible .tooltip-bubble {
+  display: block;
 }
 
 .evidence-points {

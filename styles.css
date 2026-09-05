@@ -1274,8 +1274,16 @@ h3 {
   grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1.2fr);
 }
 
-.about-standard-section .image-placeholder {
+.about-standard-photo {
   margin: 0;
+  min-width: 0;
+}
+
+.about-standard-photo img {
+  border-radius: 6px;
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 .about-standard-section h2 {

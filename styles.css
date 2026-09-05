@@ -1566,6 +1566,10 @@ ul.bullet-list li::before,
   display: block;
 }
 
+.pill-list:has(.tooltip-term:focus-visible) .tooltip-term:not(:focus-visible) .tooltip-bubble {
+  display: none;
+}
+
 .evidence-points {
   display: grid;
   gap: 14px;

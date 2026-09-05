@@ -458,6 +458,11 @@ h3 {
   margin: 0;
 }
 
+.meal-review > p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
 .quote-attribution {
   font-size: 0.85rem;
   margin-top: 14px;

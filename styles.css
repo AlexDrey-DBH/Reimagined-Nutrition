@@ -2049,8 +2049,8 @@ textarea:focus {
 
 .newsletter.newsletter-compact {
   align-items: center;
-  gap: 32px;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 520px);
+  gap: 20px;
+  grid-template-columns: minmax(0, 1120px);
   padding-block: 32px;
 }
 
@@ -2062,13 +2062,13 @@ textarea:focus {
   font-size: 1.75rem;
   line-height: 1.2;
   margin: 0 0 12px;
-  max-width: 28ch;
+  max-width: none;
 }
 
 .newsletter-compact p:last-child {
   font-size: 0.95rem;
   margin: 0;
-  max-width: 54ch;
+  max-width: none;
 }
 
 .newsletter-compact .form-card {
@@ -2076,6 +2076,7 @@ textarea:focus {
   border: 0;
   box-shadow: none;
   margin: 0;
+  max-width: none;
   min-width: 0;
   padding: 0;
   width: 100%;

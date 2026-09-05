@@ -807,6 +807,18 @@ h3 {
   align-items: center;
 }
 
+.caregiver-support {
+  align-items: center;
+}
+
+.caregiver-support > div > :first-child {
+  margin-top: 0;
+}
+
+.caregiver-support > div > :last-child {
+  margin-bottom: 0;
+}
+
 .portrait-split {
   align-items: center;
   column-gap: clamp(28px, 5vw, 76px);

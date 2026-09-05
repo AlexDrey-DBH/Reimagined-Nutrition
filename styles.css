@@ -1146,6 +1146,12 @@ h3 {
   min-width: 0;
 }
 
+.support-card-copy p .text-link {
+  display: inline;
+  font-weight: inherit;
+  margin: 0;
+}
+
 .support-card-copy > :last-child {
   margin-bottom: 0;
 }

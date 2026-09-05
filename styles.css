@@ -834,6 +834,31 @@ h3 {
   align-items: center;
 }
 
+.situation-section > div {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.situation-copy {
+  max-width: 680px;
+}
+
+.situation-copy .lead {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+  max-width: 100%;
+}
+
+.situation-copy > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 620px) {
+  .situation-copy .lead {
+    font-size: 1.125rem;
+  }
+}
+
 .caregiver-support {
   align-items: center;
 }

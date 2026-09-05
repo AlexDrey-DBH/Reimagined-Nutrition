@@ -2047,6 +2047,52 @@ textarea:focus {
   width: 100%;
 }
 
+.newsletter.newsletter-compact {
+  align-items: center;
+  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 520px);
+  padding-block: 32px;
+}
+
+.newsletter-compact .eyebrow {
+  margin: 0 0 8px;
+}
+
+.newsletter-compact h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  max-width: 28ch;
+}
+
+.newsletter-compact p:last-child {
+  font-size: 0.95rem;
+  margin: 0;
+  max-width: 54ch;
+}
+
+.newsletter-compact .form-card {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .newsletter.newsletter-compact {
+    gap: 20px;
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 28px;
+  }
+
+  .newsletter-compact .form-card {
+    max-width: none;
+  }
+}
+
 .site-footer {
   background: #292937;
   color: #f7f8f2;

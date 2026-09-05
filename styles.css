@@ -1786,6 +1786,14 @@ ul.bullet-list li::before,
     grid-template-columns: minmax(0, 1fr);
     max-width: 540px;
   }
+
+  .meal-example-layout .macro-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .meal-example-layout .macro-grid > div {
+    padding: 14px 6px;
+  }
 }
 
 @media (max-width: 360px) {

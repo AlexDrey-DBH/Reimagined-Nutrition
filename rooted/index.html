@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Rooted | Catering Menu</title>
+  <link rel="icon" href="../assets/reimagined-nutrition-icon.png">
+  <link rel="stylesheet" href="rooted.css?v=1">
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand"><h1>Rooted</h1><p>by <img src="../assets/reimagined-nutrition-logo-transparent.png" alt="Reimagined Nutrition"></p></div>
+    <div class="masthead-copy"><p>Corporate catering</p><h2>Elevated lunches.<br>Thoughtfully rooted.</h2></div>
+    <div class="bowl" role="img" aria-label="A bowl of grains, vegetables, and chickpeas from the Rooted menu"></div>
+  </header>
+  <nav class="menu-nav" aria-label="Menu categories"><a href="#proteins">Proteins</a><a href="#grains">Grains</a><a href="#greens">Greens &amp; beans</a><a href="#sauces">Sauces</a><a href="#your-menu">Your menu</a></nav>
+  <main class="layout">
+    <div class="menu">
+      <div class="menu-intro"><h2>Build your catering menu</h2><p>Minimum 10 guests per protein. One grain, two greens or beans, and three sauces included.</p></div>
+      <div id="menu-sections"></div>
+      <section class="event" aria-labelledby="event-heading">
+        <h2 id="event-heading">Event details</h2><p class="muted">Optional details for your inquiry.</p>
+        <div class="event-grid">
+          <label>Company or event<input id="event-name" autocomplete="organization" maxlength="100"></label>
+          <label>Requested date<input id="event-date" type="date"></label>
+          <label class="full">Delivery location<input id="event-location" autocomplete="street-address" maxlength="200"></label>
+          <label class="full">Dietary needs and notes<textarea id="event-notes" rows="3" maxlength="1500"></textarea></label>
+        </div>
+      </section>
+    </div>
+    <aside class="summary" id="your-menu" aria-labelledby="summary-title">
+      <div class="summary-heading"><h2 id="summary-title">Your menu</h2><button id="reset" class="quiet" type="button">Reset</button></div>
+      <p id="guest-total" class="guest-total">0 guests</p>
+      <div id="summary-items"></div>
+      <dl class="totals"><div><dt>Protein packages</dt><dd id="base-total">$0.00</dd></div><div><dt>Additional choices</dt><dd id="extra-total">$0.00</dd></div><div class="grand-total"><dt>Estimated subtotal</dt><dd id="subtotal">$0.00</dd></div></dl>
+      <p class="estimate-note">Before tax and delivery. Final pricing and availability confirmed by Ali.</p>
+      <ul id="requirements" class="requirements"></ul>
+      <p id="action-message" class="action-message" role="status" aria-live="polite"></p>
+      <button id="email-menu" class="primary" type="button">Email inquiry to Ali</button>
+      <button id="copy-menu" class="secondary" type="button">Copy menu</button>
+      <button id="download-menu" class="quiet download" type="button">Download menu</button>
+      <div id="copy-fallback" hidden><label>Your menu<textarea id="copy-text" readonly rows="8"></textarea></label></div>
+      <p class="inquiry-note">An inquiry is not a confirmed order. Email opens a draft addressed to <a href="mailto:ali@reimaginednutrition.com">ali@reimaginednutrition.com</a>.</p>
+    </aside>
+  </main>
+  <footer class="terms"><h2>Before you order</h2><p>Orders must be placed at least 72 hours in advance. Orders with less notice may not be accommodated. Delivery charges vary by distance; a detailed invoice will be provided before confirmation. Payment is required on invoicing. Applicable sales tax is calculated at invoicing under New Jersey law.</p><p>Menu selections and package estimates are based on the supplied Rooted catering menu. Dietary requirements and ingredient suitability must be confirmed with Ali.</p><a href="../assets/rooted-menu-reference.png" target="_blank" rel="noopener">View original menu</a></footer>
+  <noscript><p class="noscript">This menu builder requires JavaScript. <a href="../assets/rooted-menu-reference.png">View the original menu</a> or email ali@reimaginednutrition.com.</p></noscript>
+  <script src="rooted.js?v=1"></script>
+</body>
+</html>

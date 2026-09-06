@@ -41,11 +41,13 @@ jobs:
           node scripts/sync-seo.mjs
           node scripts/sync-seo.mjs --check
           node --test scripts/seo.test.mjs
+          node --test scripts/not-found.test.mjs
 
       - name: Prepare static site artifact
         run: |
           mkdir -p _site/assets
           cp index.html _site/
+          cp 404.html _site/
           cp specialized-recovery-meals.html _site/
           cp corporate-meals-office-lunches.html _site/
           cp full-service-catering-events.html _site/

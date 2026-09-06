@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <title>Page Not Found | Reimagined Nutrition</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="assets/reimagined-nutrition-icon.png">
+    <link rel="stylesheet" href="styles.css?v=404-20260906">
+    <style>
+      .not-found {
+        min-height: 80svh;
+        padding: 156px 24px 80px;
+        display: grid;
+        place-content: center;
+        text-align: center;
+      }
+      .not-found-content { width: min(100%, 640px); margin-inline: auto; }
+      .not-found h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 24px;
+      }
+      .not-found .lead { font-size: 20px; margin-bottom: 32px; }
+      .not-found .button { max-width: 100%; white-space: normal; }
+      @media (max-width: 600px) {
+        .not-found { padding: 124px 24px 64px; }
+        .not-found h1 { font-size: 36px; }
+        .not-found .lead { font-size: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <!-- Generated from navigation.json by scripts/sync-navigation.mjs. -->
+      <a class="brand" href="index.html" aria-label="Reimagined Nutrition home">
+        <img class="brand-logo" src="assets/reimagined-nutrition-logo-transparent.png" alt="Reimagined Nutrition">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="specialized-recovery-meals.html">Meals</a>
+        <a href="corporate-meals-office-lunches.html">Office</a>
+        <a href="full-service-catering-events.html">Catering</a>
+        <a href="nutrition-counseling.html">Counseling</a>
+        <a href="about.html">About</a>
+        <a href="contact-and-inquiry.html">Contact</a>
+      </nav>
+    </header>
+    <main class="not-found" aria-labelledby="not-found-title">
+      <div class="not-found-content">
+        <p class="eyebrow">404 &middot; Page not found</p>
+        <h1 id="not-found-title">A fresh start, a new home.</h1>
+        <p class="lead">Our new site just launched. This link may have moved, but we're still here to help.</p>
+        <a class="button button-primary" href="/">Back to homepage</a>
+      </div>
+    </main>
+    <footer class="site-footer" data-site-footer></footer>
+    <script src="script.js"></script>
+    <script src="footer.js?v=59d3e0d615ab"></script>
+  </body>
+</html>

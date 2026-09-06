@@ -36,6 +36,12 @@ jobs:
           node scripts/sync-navigation.mjs
           node scripts/sync-navigation.mjs --check
 
+      - name: Generate search metadata
+        run: |
+          node scripts/sync-seo.mjs
+          node scripts/sync-seo.mjs --check
+          node --test scripts/seo.test.mjs
+
       - name: Prepare static site artifact
         run: |
           mkdir -p _site/assets
@@ -51,6 +57,7 @@ jobs:
           cp styles.css _site/
           cp script.js _site/
           cp footer.js _site/
+          cp sitemap.xml robots.txt _site/
           cp -R rooted _site/rooted
           cp -R assets/. _site/assets/
           touch _site/.nojekyll

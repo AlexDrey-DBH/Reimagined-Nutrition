@@ -1,0 +1,73 @@
+{
+  "siteUrl": "https://alexdrey-dbh.github.io/Reimagined-Nutrition/",
+  "name": "Reimagined Nutrition",
+  "image": "assets/reimagined-nutrition-hero.png",
+  "logo": "assets/reimagined-nutrition-logo-transparent.png",
+  "telephone": "+12019064983",
+  "areaServed": ["Bergen County NJ", "North Jersey", "Rockland County NY", "New York City"],
+  "pages": [
+    {
+      "file": "index.html",
+      "title": "Meal Prep in Bergen County NJ | Reimagined Nutrition",
+      "description": "Chef-prepared meal plans, recovery meals, office lunches, catering, and nutrition counseling in Bergen County NJ and nearby areas. Meet Ali Senatore, RDN.",
+      "name": "Reimagined Nutrition",
+      "type": "WebPage"
+    },
+    {
+      "file": "specialized-recovery-meals.html",
+      "title": "Recovery Meals in Bergen County NJ | Reimagined Nutrition",
+      "description": "Personalized meal plans and chef-prepared recovery meals in Bergen County NJ, North Jersey, Rockland County NY, and NYC from a Registered Dietitian chef.",
+      "name": "Specialized & Recovery Meals",
+      "service": "Specialized meal plans and recovery meal delivery"
+    },
+    {
+      "file": "corporate-meals-office-lunches.html",
+      "title": "Office Lunch Catering in North Jersey | Reimagined Nutrition",
+      "description": "Office lunch catering and corporate meal programs for teams in Bergen County NJ and North Jersey, with chef-prepared menus and dietary accommodation.",
+      "name": "Office Meals & Lunch Catering",
+      "service": "Office lunch catering and corporate meal programs"
+    },
+    {
+      "file": "full-service-catering-events.html",
+      "title": "Catering in Bergen County NJ | Reimagined Nutrition",
+      "description": "Package catering and full-service events in Bergen County NJ and nearby areas. Explore chef-led menus, staffing, and event planning with Ali Senatore.",
+      "name": "Full-Service Catering & Events",
+      "service": "Full-service catering and event planning"
+    },
+    {
+      "file": "nutrition-counseling.html",
+      "title": "Nutrition Counseling in North Jersey | Reimagined Nutrition",
+      "description": "Private-pay nutrition counseling and medical nutrition therapy with Ali Senatore, Registered Dietitian Nutritionist. Virtual and North Jersey appointments.",
+      "name": "Nutrition Counseling",
+      "service": "Nutrition counseling and medical nutrition therapy"
+    },
+    {
+      "file": "food-service-consulting.html",
+      "title": "Food Service Consulting | Reimagined Nutrition",
+      "description": "Food service consulting with a chef and Registered Dietitian: menu development, nutrition-aware programs, sourcing, documentation, and kitchen guidance.",
+      "name": "Food Service Consulting",
+      "service": "Food service and menu consulting"
+    },
+    {
+      "file": "about.html",
+      "title": "About Ali Senatore, RDN | Reimagined Nutrition",
+      "description": "Meet Ali Senatore, Executive Chef and Registered Dietitian Nutritionist, combining culinary training and clinical nutrition for clients in North Jersey.",
+      "name": "About Ali Senatore",
+      "type": "AboutPage"
+    },
+    {
+      "file": "contact-and-inquiry.html",
+      "title": "Contact & Inquiries | Reimagined Nutrition",
+      "description": "Start a nutrition questionnaire, request a catering proposal, or book a call with Reimagined Nutrition for Bergen County NJ and nearby service areas.",
+      "name": "Contact & Inquiry",
+      "type": "ContactPage"
+    },
+    {
+      "file": "meal-plans-for-aging-parents-and-spouses.html",
+      "title": "Meals for Aging Parents | Bergen County NJ | Reimagined Nutrition",
+      "description": "Personalized meal plans and chef-prepared meals for aging parents and spouses in Bergen County NJ, North Jersey, Rockland County NY, and New York City.",
+      "name": "Meal Plans for Aging Parents & Spouses",
+      "service": "Meal plans for aging parents and spouses"
+    }
+  ]
+}

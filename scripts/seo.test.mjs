@@ -56,3 +56,13 @@ test("sitemap covers public services but excludes hidden and private pages", () 
     assert.ok(read("index.html").includes(`href="${service.file}"`), `Service lacks a crawlable homepage link: ${service.file}`);
   }
 });
+
+test("legacy Google service links redirect immediately to valid current pages", () => {
+  for (const redirect of config.redirects) {
+    const html = read(redirect.file);
+    assert.ok(canonicalUrls.includes(url(redirect.target)));
+    assert.ok(html.includes(`content="0; url=${url(redirect.target)}"`));
+    assert.ok(html.includes(`rel="canonical" href="${url(redirect.target)}"`));
+    assert.ok(!read("sitemap.xml").includes(url(redirect.file)));
+  }
+});

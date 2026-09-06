@@ -58,6 +58,7 @@ jobs:
           cp script.js _site/
           cp footer.js _site/
           cp sitemap.xml robots.txt _site/
+          cp services-1.html book-online.html _site/
           cp -R rooted _site/rooted
           cp -R assets/. _site/assets/
           touch _site/.nojekyll

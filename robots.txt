@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alexdrey-dbh.github.io/Reimagined-Nutrition/sitemap.xml
+Sitemap: https://reimaginednutrition.com/sitemap.xml

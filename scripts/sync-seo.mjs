@@ -91,6 +91,13 @@ for (const page of pages) {
 }
 output("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `  <url><loc>${xml(absolute(p.file))}</loc></url>`).join("\n")}\n</urlset>\n`);
 output("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${absolute("sitemap.xml")}\n`);
+for (const redirect of config.redirects || []) {
+  if (!/^[a-z0-9-]+\.html$/.test(redirect.file) || pages.some((p) => p.file === redirect.file) || !pages.some((p) => p.file === redirect.target)) {
+    throw new Error("Redirects must map legacy paths to existing public pages.");
+  }
+  const target = xml(absolute(redirect.target));
+  output(redirect.file, `<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <meta http-equiv="refresh" content="0; url=${target}">\n  <link rel="canonical" href="${target}">\n  <title>${xml(config.name)}</title>\n</head>\n<body></body>\n</html>\n`);
+}
 if (check && changed.length) {
   console.error(`SEO output needs regeneration: ${changed.join(", ")}`);
   process.exitCode = 1;

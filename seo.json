@@ -1,10 +1,14 @@
 {
-  "siteUrl": "https://alexdrey-dbh.github.io/Reimagined-Nutrition/",
+  "siteUrl": "https://reimaginednutrition.com/",
   "name": "Reimagined Nutrition",
   "image": "assets/reimagined-nutrition-hero.png",
   "logo": "assets/reimagined-nutrition-logo-transparent.png",
   "telephone": "+12019064983",
   "areaServed": ["Bergen County NJ", "North Jersey", "Rockland County NY", "New York City"],
+  "redirects": [
+    { "file": "services-1.html", "target": "full-service-catering-events.html" },
+    { "file": "book-online.html", "target": "contact-and-inquiry.html" }
+  ],
   "pages": [
     {
       "file": "index.html",

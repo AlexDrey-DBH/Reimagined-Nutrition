@@ -443,6 +443,10 @@ h3 {
   display: block;
 }
 
+.catering-inquiry-title span {
+  white-space: nowrap;
+}
+
 .keep-together {
   white-space: nowrap;
 }
@@ -2479,6 +2483,10 @@ textarea:focus {
 }
 
 @media (max-width: 620px) {
+  .catering-inquiry-title {
+    font-size: 1.8rem;
+  }
+
   .site-header {
     padding: 14px 18px;
   }

@@ -48,7 +48,7 @@ test("every public page has unique metadata, a working canonical, and valid stru
 test("sitemap covers public services but excludes hidden and private pages", () => {
   const sitemap = read("sitemap.xml");
   const locations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
-  assert.deepEqual(locations, [...canonicalUrls, ...(config.additionalSitemapPages || []).map(url)]);
+  assert.deepEqual(locations, canonicalUrls);
   assert.doesNotMatch(sitemap, /rooted|changelog|patch-notes|wix-embed/);
   assert.match(read("rooted/index.html"), /<meta name="robots" content="noindex, nofollow">/);
   assert.ok(read("robots.txt").includes(`Sitemap: ${new URL("sitemap.xml", config.siteUrl).href}`));

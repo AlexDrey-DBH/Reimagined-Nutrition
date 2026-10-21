@@ -89,11 +89,7 @@ for (const page of pages) {
   }
   output(page.file, updated);
 }
-const sitemapPages = [...pages.map((p) => p.file), ...(config.additionalSitemapPages || [])];
-for (const path of config.additionalSitemapPages || []) {
-  if (!/^[a-z0-9-]+\/$/.test(path) || !existsSync(join(root, path, "index.html"))) throw new Error(`Invalid sitemap page: ${path}`);
-}
-output("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map((file) => `  <url><loc>${xml(absolute(file))}</loc></url>`).join("\n")}\n</urlset>\n`);
+output("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `  <url><loc>${xml(absolute(p.file))}</loc></url>`).join("\n")}\n</urlset>\n`);
 output("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${absolute("sitemap.xml")}\n`);
 for (const redirect of config.redirects || []) {
   if (!/^[a-z0-9-]+\.html$/.test(redirect.file) || pages.some((p) => p.file === redirect.file) || !pages.some((p) => p.file === redirect.target)) {

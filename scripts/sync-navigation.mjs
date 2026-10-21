@@ -12,10 +12,10 @@ const escape = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;
 if (!Array.isArray(links) || !links.length) throw new Error("Navigation must contain links.");
 const destinations = new Set();
 for (const link of links) {
-  if (typeof link.label !== "string" || !link.label.trim() || !/^(?:[a-z0-9-]+\.html|[a-z0-9-]+\/)$/.test(link.href)) {
+  if (typeof link.label !== "string" || !link.label.trim() || !/^[a-z0-9-]+\.html$/.test(link.href)) {
     throw new Error("Each navigation entry needs a label and a local HTML destination.");
   }
-  if (!existsSync(join(root, link.href.endsWith("/") ? `${link.href}index.html` : link.href)) || destinations.has(link.href)) {
+  if (!existsSync(join(root, link.href)) || destinations.has(link.href)) {
     throw new Error(`Missing or duplicate navigation destination: ${link.href}`);
   }
   destinations.add(link.href);

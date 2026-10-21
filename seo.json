@@ -4,21 +4,10 @@
   "image": "assets/reimagined-nutrition-hero.png",
   "logo": "assets/reimagined-nutrition-logo-transparent.png",
   "telephone": "+12019064983",
-  "areaServed": [
-    "Bergen County NJ",
-    "North Jersey",
-    "Rockland County NY",
-    "New York City"
-  ],
+  "areaServed": ["Bergen County NJ", "North Jersey", "Rockland County NY", "New York City"],
   "redirects": [
-    {
-      "file": "services-1.html",
-      "target": "full-service-catering-events.html"
-    },
-    {
-      "file": "book-online.html",
-      "target": "contact-and-inquiry.html"
-    }
+    { "file": "services-1.html", "target": "full-service-catering-events.html" },
+    { "file": "book-online.html", "target": "contact-and-inquiry.html" }
   ],
   "pages": [
     {
@@ -84,8 +73,5 @@
       "name": "Meal Plans for Aging Parents & Spouses",
       "service": "Meal plans for aging parents and spouses"
     }
-  ],
-  "additionalSitemapPages": [
-    "catering-guide/"
   ]
 }

@@ -14,6 +14,7 @@ const siteFooterMarkup = `
       <a href="specialized-recovery-meals.html">Meals</a>
       <a href="corporate-meals-office-lunches.html">Office</a>
       <a href="full-service-catering-events.html">Catering</a>
+      <a href="catering-guide/">Catering Guide</a>
       <a href="nutrition-counseling.html">Counseling</a>
       <a href="about.html">About</a>
       <a href="contact-and-inquiry.html">Contact</a>

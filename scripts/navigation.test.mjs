@@ -17,9 +17,11 @@ test("one navigation source updates every static header and the footer", (t) => 
   copyFileSync(join(source, "navigation.json"), join(root, "navigation.json"));
   copyFileSync(join(source, "footer.js"), join(root, "footer.js"));
   const links = JSON.parse(readFileSync(join(root, "navigation.json"), "utf8"));
-  const pages = ["index.html", "404.html", ...links.map((link) => link.href), "food-service-consulting.html", "meal-plans-for-aging-parents-and-spouses.html", "changelog/index.html"];
+  const pages = ["index.html", "404.html", ...links.filter((link) => !link.href.endsWith("/")).map((link) => link.href), "food-service-consulting.html", "meal-plans-for-aging-parents-and-spouses.html", "changelog/index.html"];
   const fixture = '<!doctype html><header class="site-header" data-header>Old navigation</header><main>Keep page content.</main><script src="footer.js"></script>';
   for (const page of pages) writeFileSync(join(root, page), fixture);
+  mkdirSync(join(root, "catering-guide"));
+  writeFileSync(join(root, "catering-guide/index.html"), "Guide");
   const run = (...args) => spawnSync(process.execPath, [join(root, "scripts/sync-navigation.mjs"), ...args], { encoding: "utf8" });
 
   assert.equal(run("--check").status, 1);

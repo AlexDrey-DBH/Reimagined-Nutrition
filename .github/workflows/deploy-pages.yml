@@ -62,6 +62,9 @@ jobs:
           cp sitemap.xml robots.txt _site/
           cp services-1.html book-online.html _site/
           cp -R rooted _site/rooted
+          mkdir -p _site/catering-guide
+          cp catering-guide/index.html catering-guide/*.pdf _site/catering-guide/
+          cp -R catering-guide/images _site/catering-guide/images
           cp -R assets/. _site/assets/
           touch _site/.nojekyll
 
